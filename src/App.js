@@ -4,7 +4,7 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      Tetris game
+      <h2 className="title">Tetris game</h2>
     </div>
   );
 }

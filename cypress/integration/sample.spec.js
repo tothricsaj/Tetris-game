@@ -1,5 +1,10 @@
-describe('First e2e test', () => {
+describe('Crucial elements of Tetris-app', () => {
     it('Does not do much!', () => {
-        cy.visit("http://localhost:3000");
+        cy.visit("/");
+        cy.get('.title').contains('Tetris game'); // this is just a little trying
+
+        cy.get('#gameView').children('#canvas');
+
+        cy.get('#scores');
     })
 });
