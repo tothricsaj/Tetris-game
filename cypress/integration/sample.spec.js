@@ -5,6 +5,6 @@ describe('Crucial elements of Tetris-app', () => {
 
         cy.get('#gameView').children('#canvas');
 
-        cy.get('#scores');
+        cy.get('#scores').contains('Score:');
     })
 });
