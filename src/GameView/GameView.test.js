@@ -13,5 +13,7 @@ describe('Unit test of GameView', () => {
         const wrapper = shallow(<GameView />);
         console.log(wrapper.find('#canvas').length);
         expect(wrapper.find('#canvas').length).toEqual(1);
+        expect(wrapper.find('#canvas').prop('width')).toBe("300");
+        expect(wrapper.find('#canvas').prop('height')).toBe("800");
     });
 });
