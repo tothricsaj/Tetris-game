@@ -1,3 +1,4 @@
+import React from 'react';
 import { shallow } from 'enzyme';
 import GameView from './GameView.js';
 
@@ -8,8 +9,9 @@ describe('Test the jest running', () => {
 });
 
 describe('Unit test of GameView', () => {
-    it('', () => {
+    it('GameView - canvas', () => {
         const wrapper = shallow(<GameView />);
-        expect(wrapper.find('#canvas')).toBe(1);
+        console.log(wrapper.find('#canvas').length);
+        expect(wrapper.find('#canvas').length).toEqual(1);
     });
 });
