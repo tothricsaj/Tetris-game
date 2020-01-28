@@ -1,7 +1,10 @@
+import { BlockBuilder } from '../services/BlockBuilder.js';
+
 class GameRender {
     constructor() {
         this.canvas = null;
         this.ctx = null;
+        this.bb = new BlockBuilder();
     }
 
 
@@ -15,8 +18,10 @@ class GameRender {
     }
 
     testDraw() {
-        this.ctx.fillStyle = 'rgb(30, 140, 180)';
-        this.ctx.fillRect(30, 30, 40, 40);
+        // this.ctx.fillStyle = 'rgb(30, 140, 180)';
+        // this.ctx.fillRect(30, 30, 40, 40);
+        //
+        this.bb.block('Ttype', this.ctx);
     }
 }
 
