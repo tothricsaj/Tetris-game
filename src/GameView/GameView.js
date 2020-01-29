@@ -20,7 +20,7 @@ class GameView extends React.Component {
     render() {
         return (
             <div id="gameView">
-                <canvas id="canvas" width="300" height="800"></canvas>
+                <canvas id="canvas" width="300" height="500"></canvas>
             </div>
         )
     }
