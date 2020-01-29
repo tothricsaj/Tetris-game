@@ -5,7 +5,6 @@ export class BlockBuilder {
     }
 
     _builder(params, ctx) {
-        console.log(params);
         ctx.fillStyle = params.color;
         ctx.fillRect(params.x1, params.y1, params.width,params.height);
         ctx.fillRect(params.x2, params.y2, params.width,params.height);
@@ -34,44 +33,58 @@ export class BlockBuilder {
                 break;
 
             case 'Stype':
-                            params = {
-                                color: 'rgb(230, 100, 80)',
-                                x1: 80, y1: 30,
-                                x2: 90, y2: 30,
-                                x3: 70, y3: 40,
-                                x4: 80, y4: 40,
-                                width: 10, height: 10
-                            }
-                            
-                            blockType = 'Stype';
+                params = {
+                    color: 'rgb(230, 100, 80)',
+                    x1: 80, y1: 30,
+                    x2: 90, y2: 30,
+                    x3: 70, y3: 40,
+                    x4: 80, y4: 40,
+                    width: 10, height: 10
+                }
+                
+                blockType = 'Stype';
 
-                            break;
+                break;
+        case 'Ztype':
+                params = {
+                    color: 'rgb(200, 160, 90)',
+                    x1: 160, y1: 30,
+                    x2: 170, y2: 30,
+                    x3: 170, y3: 40,
+                    x4: 180, y4: 40,
+                    width: 10, height: 10
+                }
+                
+                blockType = 'Ztype';
+
+                break;
+
             case 'Otype':
-                            params = {
-                                color: 'rgb(230, 140, 180)',
-                                x1: 110, y1: 30,
-                                x2: 120, y2: 30,
-                                x3: 110, y3: 40,
-                                x4: 120, y4: 40,
-                                width: 10, height: 10
-                            }
-                            
-                            blockType = 'Otype';
+                params = {
+                    color: 'rgb(230, 140, 180)',
+                    x1: 110, y1: 30,
+                    x2: 120, y2: 30,
+                    x3: 110, y3: 40,
+                    x4: 120, y4: 40,
+                    width: 10, height: 10
+                }
+                
+                blockType = 'Otype';
 
-                            break;
+                break;
             case 'Itype':
-                            params = {
-                                color: 'rgb(140, 180, 100)',
-                                x1: 140, y1: 10,
-                                x2: 140, y2: 20,
-                                x3: 140, y3: 30,
-                                x4: 140, y4: 40,
-                                width: 10, height: 10
-                            }
-                            
-                            blockType = 'Itype';
+                params = {
+                    color: 'rgb(140, 180, 100)',
+                    x1: 140, y1: 10,
+                    x2: 140, y2: 20,
+                    x3: 140, y3: 30,
+                    x4: 140, y4: 40,
+                    width: 10, height: 10
+                }
+                
+                blockType = 'Itype';
 
-                            break;
+                break;
 
 
             default:
