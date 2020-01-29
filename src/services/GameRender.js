@@ -25,6 +25,8 @@ class GameRender {
         this.bb.block('Ttype', this.ctx);
         this.bb.block('Stype', this.ctx);
         this.bb.block('Otype', this.ctx);
+        this.bb.block('Itype', this.ctx);
+
 
     }
 }

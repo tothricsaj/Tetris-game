@@ -56,20 +56,20 @@ export class BlockBuilder {
                                 width: 10, height: 10
                             }
                             
-                            blockType = 'Ttype';
+                            blockType = 'Otype';
 
                             break;
-            case 'Ttype':
+            case 'Itype':
                             params = {
-                                color: 'rgb(30, 140, 180)',
-                                x1: 30, y1: 30,
-                                x2: 40, y2: 30,
-                                x3: 50, y3: 30,
-                                x4: 40, y4: 40,
+                                color: 'rgb(140, 180, 100)',
+                                x1: 140, y1: 10,
+                                x2: 140, y2: 20,
+                                x3: 140, y3: 30,
+                                x4: 140, y4: 40,
                                 width: 10, height: 10
                             }
                             
-                            blockType = 'Ttype';
+                            blockType = 'Itype';
 
                             break;
 
