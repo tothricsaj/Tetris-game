@@ -21,7 +21,9 @@ class GameRender {
         // this.ctx.fillStyle = 'rgb(30, 140, 180)';
         // this.ctx.fillRect(30, 30, 40, 40);
         //
+
         this.bb.block('Ttype', this.ctx);
+        this.bb.block('Stype', this.ctx);
     }
 }
 
