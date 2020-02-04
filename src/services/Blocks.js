@@ -55,5 +55,20 @@ export class Block {
             this.y4 -= leftValue;
         }
     }
+}
 
+export class TBlock extends Block {
+    constructor() {
+        super();
+
+        this.x1 = 138; // left
+        this.x2 = 148; // middle
+        this.x3 = 158; // right
+        this.x4 = 148; // bottom
+
+        this.y1 = 0; // left
+        this.y2 = 0; // middle
+        this.y3 = 0; // right
+        this.y4 = 10; // bottom
+    }
 }

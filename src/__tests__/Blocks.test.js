@@ -1,4 +1,7 @@
-import { Block } from '../services/Blocks.js';
+import { 
+    Block,
+    TBlock
+} from '../services/Blocks.js';
 
 describe('The Blocks', () => {
     it('The parent block', () => {
@@ -102,6 +105,37 @@ describe('The Blocks', () => {
         expect(block.y2).toBe(0);
         expect(block.y3).toBe(0);
         expect(block.y4).toBe(0);
+    });
 
+    it('TBlock', () => {
+        let tBlock = new TBlock();
+
+        expect(tBlock.x1).toBe(138); // left
+        expect(tBlock.x2).toBe(148); // middle
+        expect(tBlock.x3).toBe(158); // right
+        expect(tBlock.x4).toBe(148); // bottom
+
+        expect(tBlock.y1).toBe(0); // left
+        expect(tBlock.y2).toBe(0); // middle
+        expect(tBlock.y3).toBe(0); // right
+        expect(tBlock.y4).toBe(10); // bottom
+    });
+
+    it('SBlock', () => {
+        expect(true).toBeTruthy();
+    });
+
+    it('OBlock', () => {
+        expect(true).toBeTruthy();
+    });
+    
+    it('IBlock', () => {
+        expect(true).toBeTruthy();
+    });
+    
+    it('ZBlock', () => {
+        expect(true).toBeTruthy();
     });
 });
+
+
