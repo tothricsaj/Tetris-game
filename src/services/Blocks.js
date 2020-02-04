@@ -1,4 +1,4 @@
-class Block {
+export class Block {
     constructor() {
         this.x1 = null;
         this.x2 = null;
@@ -27,6 +27,13 @@ class Block {
             this.y3,
             this.y4
         ];
+    }
+
+    moveDown(downValue) {
+        this.x1 += downValue;
+        this.x2 += downValue;
+        this.x3 += downValue;
+        this.x4 += downValue;
     }
 
 }
