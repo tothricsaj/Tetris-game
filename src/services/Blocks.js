@@ -29,11 +29,31 @@ export class Block {
         ];
     }
 
-    moveDown(downValue) {
-        this.x1 += downValue;
-        this.x2 += downValue;
-        this.x3 += downValue;
-        this.x4 += downValue;
+    moveDown(downValue, edge) {
+        if ((this.x1 + downValue) < edge) {
+            this.x1 += downValue;
+            this.x2 += downValue;
+            this.x3 += downValue;
+            this.x4 += downValue;
+        }
+    }
+
+    moveRight(rightValue, edge) {
+        if((this.y1 + rightValue) < edge) {
+            this.y1 += rightValue;
+            this.y2 += rightValue;
+            this.y3 += rightValue;
+            this.y4 += rightValue;
+        }
+    }
+
+    moveLeft(leftValue) {
+        if ((this.y1 - leftValue) > 0) {
+            this.y1 -= leftValue;
+            this.y2 -= leftValue;
+            this.y3 -= leftValue;
+            this.y4 -= leftValue;
+        }
     }
 
 }
