@@ -22,11 +22,8 @@ class GameRender {
         // this.ctx.fillRect(30, 30, 40, 40);
         //
 
-        this.bb.block('Ttype', this.ctx);
-        this.bb.block('Stype', this.ctx);
-        this.bb.block('Otype', this.ctx);
-        this.bb.block('Itype', this.ctx);
-        this.bb.block('Ztype', this.ctx);
+        let tBlock = this.bb.block('Ttype', this.ctx);
+        this.bb.builder(tBlock, this.ctx);
     }
 }
 

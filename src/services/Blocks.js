@@ -9,6 +9,11 @@ export class Block {
         this.y2 = null;
         this.y3 = null;
         this.y4 = null;
+
+        this.color = null;
+
+        this.width = 10;
+        this.height = 10;
     }
 
     getXDimensions() {
@@ -70,5 +75,9 @@ export class TBlock extends Block {
         this.y2 = 0; // middle
         this.y3 = 0; // right
         this.y4 = 10; // bottom
+
+        this.color = 'rgb(30, 140, 180)';
     }
 }
+
+// TODO make the other bloks !!!!!!!!!!!!!!!!!!!!!!!
