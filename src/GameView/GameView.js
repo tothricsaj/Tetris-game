@@ -13,7 +13,8 @@ class GameView extends React.Component {
 
     componentDidMount() {
         this._gr.init();
-        this._gr.testDraw();
+        // this._gr.testDraw();
+        // window.requestAnimationFrame(this._gr.init);
     }
 
 

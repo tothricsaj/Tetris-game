@@ -12,9 +12,20 @@ class GameRender {
         this.canvas = document.getElementById('canvas');
         this.ctx = this.canvas.getContext('2d');
 
-        if(this.canvas.getConext) {
-            this.ctx = this.canvas.getContext('2d');
-        }
+        
+        let tBlock = this.bb.block('Ttype', this.ctx);
+
+        this.ctx.save();
+
+        this.bb.builder(tBlock, this.ctx);
+
+        tBlock.moveDown();
+
+        this.ctx.restore();
+
+        console.log(this.canvas);
+
+        window.requestAnimationFrame(GameRender.prototype.init);
     }
 
     testDraw() {
@@ -24,6 +35,10 @@ class GameRender {
 
         let tBlock = this.bb.block('Ttype', this.ctx);
         this.bb.builder(tBlock, this.ctx);
+    }
+
+    gameLoop() {
+        
     }
 }
 
