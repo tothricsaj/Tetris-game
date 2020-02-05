@@ -8,22 +8,19 @@ class GameRender {
     }
 
 
-    init() {
-        this.canvas = document.getElementById('canvas');
-        this.ctx = this.canvas.getContext('2d');
-
+    init(canvasRef) {
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
         
-        let tBlock = this.bb.block('Ttype', this.ctx);
+        let tBlock = BlockBuilder.prototype.block('Ttype', ctx);
 
-        this.ctx.save();
+        ctx.save();
 
-        this.bb.builder(tBlock, this.ctx);
+        BlockBuilder.prototype.builder(tBlock, ctx);
 
         tBlock.moveDown();
 
-        this.ctx.restore();
-
-        console.log(this.canvas);
+        ctx.restore();
 
         window.requestAnimationFrame(GameRender.prototype.init);
     }

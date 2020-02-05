@@ -119,6 +119,8 @@ describe('The Blocks', () => {
         expect(tBlock.y2).toBe(0); // middle
         expect(tBlock.y3).toBe(0); // right
         expect(tBlock.y4).toBe(10); // bottom
+
+        expect(tBlock.color).toBe('rgb(30, 140, 180)');
     });
 
     it('SBlock', () => {
