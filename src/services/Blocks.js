@@ -41,6 +41,8 @@ export class Block {
             this.x3 += downValue;
             this.x4 += downValue;
         }
+
+        // window.requestAnimationFrame(this.moveDown);
     }
 
     moveRight(rightValue, edge) {

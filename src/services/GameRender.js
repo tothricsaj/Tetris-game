@@ -16,13 +16,13 @@ class GameRender {
 
         ctx.save();
 
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
         BlockBuilder.prototype.builder(tBlock, ctx);
 
         tBlock.moveDown();
 
         ctx.restore();
-
-        window.requestAnimationFrame(GameRender.prototype.init);
     }
 
     testDraw() {
