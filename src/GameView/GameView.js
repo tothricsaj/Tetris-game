@@ -52,7 +52,7 @@ class Canvas extends React.Component {
         ctx.translate(width/2, height/2 );
         ctx.rotate(angle * Math.PI / 180);
         ctx.fillStyle = '#4397AC';
-        ctx.fillRect(-width/4, -height/4, width/2, height/2);
+        ctx.fillRect(-width/4, -height/4, width/2, (height - 200)/2);
         ctx.restore();
     }
 
