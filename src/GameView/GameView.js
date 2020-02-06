@@ -1,6 +1,6 @@
 /* such a unnecessary comment */
 import React from 'react';
-import { BlockBuilder } from '../services/BlockBuilder.js';
+// import { BlockBuilder } from '../services/BlockBuilder.js';
 import GameRender from '../services/GameRender.js';
 
 class GameView extends React.Component {
@@ -12,17 +12,19 @@ class GameView extends React.Component {
   
   componentDidMount() {
     this.rAF = requestAnimationFrame(this.updateAnimationState);
-
   }
   
   componentWillUnmount() {
     cancelAnimationFrame(this.rAF);
   }
   
-  updateAnimationState() {
-    this.setState(prevState => ({ angle: prevState.angle + 1 }));
-    this.rAF = requestAnimationFrame(this.updateAnimationState);
-  }
+  updateAnimationState(elapsedTime) {
+      setTimeout(() => {
+        this.setState(prevState => ({ angle: prevState.angle + 10 }));
+        this.rAF = requestAnimationFrame(this.updateAnimationState);
+      }, 1000);
+      
+   }
   
   render() {
     return <Canvas angle={this.state.angle} />
@@ -46,15 +48,16 @@ class Canvas extends React.Component {
         const ctx = canvas.getContext('2d');
         const width = canvas.width;
         const height = canvas.height;
+
         ctx.save();
         ctx.beginPath();
         ctx.clearRect(0, 0, width, height);
         ctx.translate(width/2, height/2 );
-        ctx.rotate(angle * Math.PI / 180);
+        ctx.rotate(angle * Math.PI / 380);
         ctx.fillStyle = '#4397AC';
         ctx.fillRect(-width/4, -height/4, width/2, (height - 200)/2);
         ctx.restore();
-    }
+}
 
 
     render() {
