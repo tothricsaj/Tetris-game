@@ -14,6 +14,7 @@ export class Block {
 
         this.width = 10;
         this.height = 10;
+        this.moveDown = this.moveDown.bind(this);
     }
 
     getXDimensions() {
@@ -35,12 +36,15 @@ export class Block {
     }
 
     moveDown(downValue, edge) {
-        if ((this.x1 + downValue) < edge) {
-            this.x1 += downValue;
-            this.x2 += downValue;
-            this.x3 += downValue;
-            this.x4 += downValue;
+        if ((this.y1 + downValue) < edge) {
+            this.y1 += downValue;
+            this.y2 += downValue;
+            this.y3 += downValue;
+            this.y4 += downValue;
+            console.log('yhea');
         }
+
+        console.log(this.x1);
 
         // window.requestAnimationFrame(this.moveDown);
     }

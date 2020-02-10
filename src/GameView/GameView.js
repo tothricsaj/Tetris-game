@@ -1,6 +1,7 @@
 /* such a unnecessary comment */
 import React from 'react';
-// import { BlockBuilder } from '../services/BlockBuilder.js';
+import { BlockBuilder } from '../services/BlockBuilder.js';
+import { TBlock } from '../services/Blocks.js';
 import GameRender from '../services/GameRender.js';
 
 class GameView extends React.Component {
@@ -22,7 +23,7 @@ class GameView extends React.Component {
       setTimeout(() => {
         this.setState(prevState => ({ angle: prevState.angle + 10 }));
         this.rAF = requestAnimationFrame(this.updateAnimationState);
-      }, 1000);
+      }, 500);
       
    }
   
@@ -35,28 +36,47 @@ class Canvas extends React.Component {
 
     constructor(props) {
         super(props);
-        this._gr = new GameRender();
+        // this._gr = new GameRender();
+        this._bb = new BlockBuilder();
+        this.Tblock = new TBlock();
         this.canvas = React.createRef();
     }
 
     componentDidUpdate() {
-        // this._gr.init();
-        // this._gr.testDraw();
-        
-        const {angle} = this.props;
+
         const canvas = this.canvas.current;
         const ctx = canvas.getContext('2d');
         const width = canvas.width;
         const height = canvas.height;
 
         ctx.save();
-        ctx.beginPath();
+
         ctx.clearRect(0, 0, width, height);
-        ctx.translate(width/2, height/2 );
-        ctx.rotate(angle * Math.PI / 380);
-        ctx.fillStyle = '#4397AC';
-        ctx.fillRect(-width/4, -height/4, width/2, (height - 200)/2);
+
+
+        this.Tblock.moveDown(20, 500);
+        this._bb.builder(this.Tblock, ctx);
+
         ctx.restore();
+
+        
+        // this._gr.init();
+        // this._gr.testDraw();
+        
+        // const {angle} = this.props;
+        // const canvas = this.canvas.current;
+        // const ctx = canvas.getContext('2d');
+        // const width = canvas.width;
+        // const height = canvas.height;
+
+        // ctx.save();
+        // ctx.beginPath();
+        // ctx.clearRect(0, 0, width, height);
+        // ctx.translate(width/2, height/2 );
+        // ctx.rotate(angle * Math.PI / 380);
+        // ctx.fillStyle = '#4397AC';
+        // ctx.fillRect(-width/4, -height/4, width/2, (height - 200)/2);
+        // ctx.restore();
 }
 
 

@@ -6,7 +6,6 @@ function App() {
   return (
     <div className="App">
       <h2 className="title">Tetris game</h2>
-
       <GameView />
     </div>
   );
