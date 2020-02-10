@@ -12,10 +12,9 @@ export class BlockBuilder {
         ctx.fillRect(block.x2, block.y2, block.width, block.height);
         ctx.fillRect(block.x3, block.y3, block.width, block.height);
         ctx.fillRect(block.x4, block.y4, block.width, block.height);
-   
     }
 
-    block(type, ctx) {
+    block(type) {
         let params = null;
         let blockType = null;
 

@@ -41,10 +41,8 @@ export class Block {
             this.y2 += downValue;
             this.y3 += downValue;
             this.y4 += downValue;
-            console.log('yhea');
         }
 
-        console.log(this.x1);
 
         // window.requestAnimationFrame(this.moveDown);
     }
@@ -83,6 +81,8 @@ export class TBlock extends Block {
         this.y4 = 10; // bottom
 
         this.color = 'rgb(30, 140, 180)';
+
+        console.log('TBlock was made by builder');
     }
 }
 

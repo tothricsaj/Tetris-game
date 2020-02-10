@@ -36,10 +36,14 @@ class Canvas extends React.Component {
 
     constructor(props) {
         super(props);
-        // this._gr = new GameRender();
+        
         this._bb = new BlockBuilder();
         this.Tblock = new TBlock();
         this.canvas = React.createRef();
+
+        this.state = {
+            block: this._bb.block('Ttype'),
+        };
     }
 
     componentDidUpdate() {
@@ -49,16 +53,20 @@ class Canvas extends React.Component {
         const width = canvas.width;
         const height = canvas.height;
 
+        if(this.state.block.getYDimensions()[0] === 480) {
+            this.setState({
+                block: this._bb.block('Ttype')
+            });
+        }
+
         ctx.save();
 
         ctx.clearRect(0, 0, width, height);
 
-
-        this.Tblock.moveDown(20, 500);
-        this._bb.builder(this.Tblock, ctx);
+        this._bb.builder(this.state.block, ctx);
+        this.state.block.moveDown(20, 500);
 
         ctx.restore();
-
         
         // this._gr.init();
         // this._gr.testDraw();
