@@ -53,7 +53,7 @@ class Canvas extends React.Component {
         const width = canvas.width;
         const height = canvas.height;
 
-        if(this.state.block.getYDimensions()[0] === 480) {
+        if(this.state.block.getYDimensions()[0] === 500) {
             this.setState({
                 block: this._bb.block('Ttype')
             });
