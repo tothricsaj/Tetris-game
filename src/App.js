@@ -13,6 +13,6 @@ function App() {
 
 export default App;
 
-/*
- * So, this is ownig to gitflow
- */
+// I want to follow the GitFlow workflow conception.
+// I is fairly hard alone...
+// So, this is ownig to gitflow
