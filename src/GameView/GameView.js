@@ -2,7 +2,7 @@
 import React from 'react';
 import { BlockBuilder } from '../services/BlockBuilder.js';
 import { TBlock } from '../services/Blocks.js';
-import GameRender from '../services/GameRender.js';
+// import GameRender from '../services/GameRender.js';
 
 class GameView extends React.Component {
   constructor(props) {
@@ -38,11 +38,11 @@ class Canvas extends React.Component {
         super(props);
         
         this._bb = new BlockBuilder();
-        this.Tblock = new TBlock();
         this.canvas = React.createRef();
+        this.blockType = 'Stype';
 
         this.state = {
-            block: this._bb.block('Ttype'),
+            block: this._bb.block(this.blockType),
         };
     }
 
@@ -53,9 +53,10 @@ class Canvas extends React.Component {
         const width = canvas.width;
         const height = canvas.height;
 
+        console.log(this.state.block.getYDimensions()[0]);
         if(this.state.block.getYDimensions()[0] === 500) {
             this.setState({
-                block: this._bb.block('Ttype')
+                block: this._bb.block(this.blockType)
             });
         }
 

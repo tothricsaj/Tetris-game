@@ -86,4 +86,22 @@ export class TBlock extends Block {
     }
 }
 
-// TODO make the other bloks !!!!!!!!!!!!!!!!!!!!!!!
+export class SBlock extends Block {
+    constructor() {
+        super();
+
+        this.x1 = 148; // topLeft
+        this.x2 = 158; // topRight
+        this.x3 = 138; 
+        this.x4 = 148; 
+
+        this.y1 = 0;
+        this.y2 = 0;
+        this.y3 = 10;
+        this.y4 = 10;
+
+        this.color = 'rgb(230, 100, 80)'
+
+        console.log('SBlock was made by builder');
+    }
+}
