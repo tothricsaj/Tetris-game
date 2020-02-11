@@ -105,3 +105,21 @@ export class SBlock extends Block {
         console.log('SBlock was made by builder');
     }
 }
+
+export class ZBlock extends Block {
+    constructor() {
+        super();
+        this.x1 = 138;
+        this.x2 = 148;
+        this.x3 = 148;
+        this.x4 = 158;
+
+        this.y1 = 0;
+        this.y2 = 0;
+        this.y3 = 10;
+        this.y4 = 10;
+
+        this.color = 'rgb(200, 160, 90)';
+
+    }
+}
