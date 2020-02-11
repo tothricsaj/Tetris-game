@@ -48,7 +48,8 @@ export class Block {
     }
 
     moveRight(rightValue, edge) {
-        if((this.x1 + rightValue) <= edge) {
+        // TODO: find a common solution for every block type
+        if((this.x3 + 10 + rightValue) <= edge) {
             this.x1 += rightValue;
             this.x2 += rightValue;
             this.x3 += rightValue;

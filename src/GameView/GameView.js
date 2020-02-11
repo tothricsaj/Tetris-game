@@ -20,7 +20,7 @@ class GameView extends React.Component {
       setTimeout(() => {
         this.setState({connect: true}); // I draw a blank about this....explore!
         this.rAF = requestAnimationFrame(this.updateAnimationState);
-      }, 200);
+      }, 100);
       
    }
   
@@ -62,7 +62,7 @@ class Canvas extends React.Component {
                     this.state.block.moveLeft(0.5);
                     return;
                 case 39:
-                    this.state.block.moveRight(0.5, width);
+                    this.state.block.moveRight(0.5, 300);
                     return;
                 case 40:
                     this.state.block.moveDown(0.5, 500);
@@ -75,7 +75,7 @@ class Canvas extends React.Component {
         document.addEventListener('keydown', blockControll);
 
         // console.log(this.state.block.getYDimensions()[0]);
-        if(this.state.block.getYDimensions()[0] === 500) {
+        if(this.state.block.getYDimensions()[0] >= 500) {
             this.setState({
                 block: this._bb.block(this.blockType)
             });
