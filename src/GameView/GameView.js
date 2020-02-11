@@ -33,6 +33,8 @@ class Canvas extends React.Component {
 
     constructor(props) {
         super(props);
+
+        document.addEventListener('keydown', this.blockControll);
         
         this._bb = new BlockBuilder();
         this.canvas = React.createRef();
@@ -43,7 +45,29 @@ class Canvas extends React.Component {
         };
 
         this._moveToBottom = 0;
+        this.blockControll = this.blockControll.bind(this);
     }
+
+    blockControll = (event) => {
+        // TODO find the reason of lot of calling
+        event.preventDefault();
+        console.log(event.keyCode);
+
+        switch(event.keyCode) {
+            case 37:
+                this.state.block.moveLeft(10);
+                return;
+            case 39:
+                this.state.block.moveRight(10, 300);
+                return;
+            case 40:
+                this.state.block.moveDown(10, 500);
+                return;
+            default:
+                return;
+        }
+    };
+
 
     componentDidUpdate() {
 
@@ -51,28 +75,6 @@ class Canvas extends React.Component {
         const ctx = canvas.getContext('2d');
         const width = canvas.width;
         const height = canvas.height;
-
-        let blockControll = (event) => {
-            // TODO find the reason of lot of calling
-            event.preventDefault();
-            console.log(event.keyCode);
-
-            switch(event.keyCode) {
-                case 37:
-                    this.state.block.moveLeft(0.5);
-                    return;
-                case 39:
-                    this.state.block.moveRight(0.5, 300);
-                    return;
-                case 40:
-                    this.state.block.moveDown(0.5, 500);
-                    return;
-                default:
-                    return;
-            }
-        };
-
-        document.addEventListener('keydown', blockControll);
 
         // console.log(this.state.block.getYDimensions()[0]);
         if(this.state.block.getYDimensions()[0] >= 500) {
