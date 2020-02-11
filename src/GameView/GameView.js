@@ -1,8 +1,5 @@
-/* such a unnecessary comment */
 import React from 'react';
 import { BlockBuilder } from '../services/BlockBuilder.js';
-import { TBlock } from '../services/Blocks.js';
-// import GameRender from '../services/GameRender.js';
 
 class GameView extends React.Component {
   constructor(props) {
@@ -39,7 +36,7 @@ class Canvas extends React.Component {
         
         this._bb = new BlockBuilder();
         this.canvas = React.createRef();
-        this.blockType = 'Otype';
+        this.blockType = 'Itype';
 
         this.state = {
             block: this._bb.block(this.blockType),
@@ -68,24 +65,6 @@ class Canvas extends React.Component {
         this.state.block.moveDown(20, 500);
 
         ctx.restore();
-        
-        // this._gr.init();
-        // this._gr.testDraw();
-        
-        // const {angle} = this.props;
-        // const canvas = this.canvas.current;
-        // const ctx = canvas.getContext('2d');
-        // const width = canvas.width;
-        // const height = canvas.height;
-
-        // ctx.save();
-        // ctx.beginPath();
-        // ctx.clearRect(0, 0, width, height);
-        // ctx.translate(width/2, height/2 );
-        // ctx.rotate(angle * Math.PI / 380);
-        // ctx.fillStyle = '#4397AC';
-        // ctx.fillRect(-width/4, -height/4, width/2, (height - 200)/2);
-        // ctx.restore();
 }
 
 

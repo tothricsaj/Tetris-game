@@ -1,4 +1,4 @@
-import { TBlock, SBlock, ZBlock, OBlock } from './Blocks.js';
+import { TBlock, SBlock, ZBlock, OBlock, IBlock } from './Blocks.js';
 
 export class BlockBuilder {
     constructor() {
@@ -40,19 +40,9 @@ export class BlockBuilder {
                 return new OBlock();
 
             case 'Itype':
-                params = {
-                    color: 'rgb(140, 180, 100)',
-                    x1: 140, y1: 10,
-                    x2: 140, y2: 20,
-                    x3: 140, y3: 30,
-                    x4: 140, y4: 40,
-                    width: 10, height: 10
-                }
                 
                 blockType = 'Itype';
-
-                break;
-
+                return new IBlock();
 
             default:
                 return 'No set type'

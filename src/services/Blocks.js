@@ -143,3 +143,21 @@ export class OBlock extends Block {
 
     }
 }
+
+export class IBlock extends Block {
+    constructor() {
+        super();
+
+        this.x1 = 138;
+        this.x2 = 138;
+        this.x3 = 138;
+        this.x4 = 138;
+
+        this.y1 = 0;
+        this.y2 = 10;
+        this.y3 = 20;
+        this.y4 = 30;
+
+        this.color = 'rgb(140, 180, 100)';
+    }
+}
