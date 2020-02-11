@@ -54,6 +54,17 @@ class Canvas extends React.Component {
             // TODO find the reason of lot of calling
             event.preventDefault();
             console.log(event.keyCode);
+
+            switch(event.keyCode) {
+                case 37:
+                    this.state.block.moveLeft(1);
+                    return;
+                case 39:
+                    this.state.block.moveRight(1, width);
+                    return;
+                default:
+                    return;
+            }
         };
 
         document.addEventListener('keydown', blockControll);
