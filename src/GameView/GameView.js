@@ -50,7 +50,15 @@ class Canvas extends React.Component {
         const width = canvas.width;
         const height = canvas.height;
 
-        console.log(this.state.block.getYDimensions()[0]);
+        let blockControll = (event) => {
+            // TODO find the reason of lot of calling
+            event.preventDefault();
+            console.log(event.keyCode);
+        };
+
+        document.addEventListener('keydown', blockControll);
+
+        // console.log(this.state.block.getYDimensions()[0]);
         if(this.state.block.getYDimensions()[0] === 500) {
             this.setState({
                 block: this._bb.block(this.blockType)
@@ -65,6 +73,8 @@ class Canvas extends React.Component {
         this.state.block.moveDown(20, 500);
 
         ctx.restore();
+
+        // document.removeEventListener('keydown', blockControll);
 }
 
 
