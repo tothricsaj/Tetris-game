@@ -20,7 +20,7 @@ class GameView extends React.Component {
       setTimeout(() => {
         this.setState({connect: true}); // I draw a blank about this....explore!
         this.rAF = requestAnimationFrame(this.updateAnimationState);
-      }, 1000);
+      }, 200);
       
    }
   
@@ -41,6 +41,8 @@ class Canvas extends React.Component {
         this.state = {
             block: this._bb.block(this.blockType),
         };
+
+        this._moveToBottom = 0;
     }
 
     componentDidUpdate() {
@@ -57,10 +59,13 @@ class Canvas extends React.Component {
 
             switch(event.keyCode) {
                 case 37:
-                    this.state.block.moveLeft(1);
+                    this.state.block.moveLeft(0.5);
                     return;
                 case 39:
-                    this.state.block.moveRight(1, width);
+                    this.state.block.moveRight(0.5, width);
+                    return;
+                case 40:
+                    this.state.block.moveDown(0.5, 500);
                     return;
                 default:
                     return;
@@ -80,10 +85,16 @@ class Canvas extends React.Component {
 
         ctx.clearRect(0, 0, width, height);
 
-        this._bb.builder(this.state.block, ctx);
-        this.state.block.moveDown(20, 500);
 
+        this._bb.builder(this.state.block, ctx);
+        if (this._moveToBottom === 50) {
+            this.state.block.moveDown(20, 500);
+            this._moveToBottom = 0;
+        }
+        
         ctx.restore();
+
+        this._moveToBottom += 5;
 
         // document.removeEventListener('keydown', blockControll);
 }
