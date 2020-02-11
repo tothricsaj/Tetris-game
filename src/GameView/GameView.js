@@ -20,7 +20,7 @@ class GameView extends React.Component {
       setTimeout(() => {
         this.setState({connect: true}); // I draw a blank about this....explore!
         this.rAF = requestAnimationFrame(this.updateAnimationState);
-      }, 1000);
+      }, 500);
       
    }
   
@@ -50,10 +50,18 @@ class Canvas extends React.Component {
         const width = canvas.width;
         const height = canvas.height;
 
-        console.log(this.state.block.getYDimensions()[0]);
+        // console.log(this.state.block.getYDimensions()[0]);
         if(this.state.block.getYDimensions()[0] === 500) {
+            let blockTypes = [
+                'Itype',
+                'Otype',
+                'Ztype',
+                'Stype',
+                'Ttype'
+            ];
+
             this.setState({
-                block: this._bb.block(this.blockType)
+                block: this._bb.block(blockTypes[Math.floor(Math.random() * blockTypes.length)])
             });
         }
 
