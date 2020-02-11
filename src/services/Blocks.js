@@ -120,7 +120,6 @@ export class ZBlock extends Block {
         this.y4 = 10;
 
         this.color = 'rgb(200, 160, 90)';
-
     }
 }
 
@@ -139,8 +138,6 @@ export class OBlock extends Block {
         this.y4 = 10;
 
         this.color = 'rgb(230, 140, 180)';
-
-
     }
 }
 

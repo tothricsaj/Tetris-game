@@ -4,7 +4,7 @@ import { BlockBuilder } from '../services/BlockBuilder.js';
 class GameView extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { angle: 0 };
+    this.state = { connect: true };
     this.updateAnimationState = this.updateAnimationState.bind(this);
   }
   
@@ -18,14 +18,14 @@ class GameView extends React.Component {
   
   updateAnimationState(elapsedTime) {
       setTimeout(() => {
-        this.setState(prevState => ({ angle: prevState.angle + 10 }));
+        this.setState({connect: true}); // I draw a blank about this....explore!
         this.rAF = requestAnimationFrame(this.updateAnimationState);
-      }, 500);
+      }, 1000);
       
    }
   
   render() {
-    return <Canvas angle={this.state.angle} />
+    return <Canvas />
   }
 }
 

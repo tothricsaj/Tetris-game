@@ -15,7 +15,6 @@ export class BlockBuilder {
     }
 
     block(type) {
-        let params = null;
         let blockType = null;
 
         switch(type) {
