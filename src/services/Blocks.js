@@ -123,3 +123,23 @@ export class ZBlock extends Block {
 
     }
 }
+
+export class OBlock extends Block {
+    constructor() {
+        super();
+
+        this.x1 = 138;
+        this.x2 = 148;
+        this.x3 = 138;
+        this.x4 = 148;
+
+        this.y1 = 0;
+        this.y2 = 0;
+        this.y3 = 10;
+        this.y4 = 10;
+
+        this.color = 'rgb(230, 140, 180)';
+
+
+    }
+}

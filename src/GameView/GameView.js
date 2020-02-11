@@ -39,7 +39,7 @@ class Canvas extends React.Component {
         
         this._bb = new BlockBuilder();
         this.canvas = React.createRef();
-        this.blockType = 'Ztype';
+        this.blockType = 'Otype';
 
         this.state = {
             block: this._bb.block(this.blockType),

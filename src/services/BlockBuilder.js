@@ -1,4 +1,4 @@
-import { TBlock, SBlock, ZBlock } from './Blocks.js';
+import { TBlock, SBlock, ZBlock, OBlock } from './Blocks.js';
 
 export class BlockBuilder {
     constructor() {
@@ -35,18 +35,10 @@ export class BlockBuilder {
                 return new ZBlock();
 
             case 'Otype':
-                params = {
-                    color: 'rgb(230, 140, 180)',
-                    x1: 110, y1: 30,
-                    x2: 120, y2: 30,
-                    x3: 110, y3: 40,
-                    x4: 120, y4: 40,
-                    width: 10, height: 10
-                }
                 
                 blockType = 'Otype';
+                return new OBlock();
 
-                break;
             case 'Itype':
                 params = {
                     color: 'rgb(140, 180, 100)',
