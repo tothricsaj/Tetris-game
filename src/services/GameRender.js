@@ -8,13 +8,21 @@ class GameRender {
     }
 
 
-    init() {
-        this.canvas = document.getElementById('canvas');
-        this.ctx = this.canvas.getContext('2d');
+    init(canvasRef) {
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        
+        let tBlock = BlockBuilder.prototype.block('Ttype', ctx);
 
-        if(this.canvas.getConext) {
-            this.ctx = this.canvas.getContext('2d');
-        }
+        ctx.save();
+
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        BlockBuilder.prototype.builder(tBlock, ctx);
+
+        tBlock.moveDown();
+
+        ctx.restore();
     }
 
     testDraw() {
@@ -22,11 +30,12 @@ class GameRender {
         // this.ctx.fillRect(30, 30, 40, 40);
         //
 
-        this.bb.block('Ttype', this.ctx);
-        this.bb.block('Stype', this.ctx);
-        this.bb.block('Otype', this.ctx);
-        this.bb.block('Itype', this.ctx);
-        this.bb.block('Ztype', this.ctx);
+        let tBlock = this.bb.block('Ttype', this.ctx);
+        this.bb.builder(tBlock, this.ctx);
+    }
+
+    gameLoop() {
+        
     }
 }
 
