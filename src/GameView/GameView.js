@@ -36,7 +36,7 @@ class Canvas extends React.Component {
         
         this._bb = new BlockBuilder();
         this.canvas = React.createRef();
-        this.blockType = 'Itype';
+        this.blockType = 'Ttype';
 
         this.state = {
             block: this._bb.block(this.blockType),
