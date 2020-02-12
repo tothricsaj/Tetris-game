@@ -40,6 +40,10 @@ class Canvas extends React.Component {
         this.canvas = React.createRef();
         this.blockType = 'Ttype';
 
+        // I guess that a more subtle way exists.....
+        this.gamePlace = [];
+        for(let i=0; i<5; i++) this.gamePlace.push(new Array(3).fill(null));
+
         this.state = {
             block: this._bb.block(this.blockType),
         };
@@ -76,7 +80,10 @@ class Canvas extends React.Component {
         const height = canvas.height;
 
         // console.log(this.state.block.getYDimensions()[0]);
-        if(this.state.block.getYDimensions()[0] >= 500) {
+        
+        // Here we drop a new block element 
+        // Furthermore this is the a new loop, indeed
+        if(this.state.block.getYDimensions()[0] >= 100) {
             let blockTypes = [
                 'Itype',
                 'Otype',
@@ -105,8 +112,7 @@ class Canvas extends React.Component {
         this._moveToBottom += 5;
 
         // document.removeEventListener('keydown', blockControll);
-}
-
+    }
 
     render() {
         return (
