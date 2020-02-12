@@ -49,7 +49,6 @@ class Canvas extends React.Component {
     }
 
     blockControll = (event) => {
-        // TODO find the reason of lot of calling
         event.preventDefault();
         console.log(event.keyCode);
 
