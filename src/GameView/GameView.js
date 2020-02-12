@@ -78,8 +78,15 @@ class Canvas extends React.Component {
 
         // console.log(this.state.block.getYDimensions()[0]);
         if(this.state.block.getYDimensions()[0] >= 500) {
+            let blockTypes = [
+                'Itype',
+                'Otype',
+                'Ztype',
+                'Stype',
+                'Ttype'
+            ];
             this.setState({
-                block: this._bb.block(this.blockType)
+                block: this._bb.block(blockTypes[Math.floor(Math.random() * blockTypes.length)])
             });
         }
 
