@@ -20,7 +20,7 @@ class GameView extends React.Component {
       setTimeout(() => {
         this.setState({connect: true}); // I draw a blank about this....explore!
         this.rAF = requestAnimationFrame(this.updateAnimationState);
-      }, 500);
+      }, 100);
       
    }
   
@@ -33,15 +33,41 @@ class Canvas extends React.Component {
 
     constructor(props) {
         super(props);
+
+        document.addEventListener('keydown', this.blockControll);
         
         this._bb = new BlockBuilder();
         this.canvas = React.createRef();
-        this.blockType = 'Itype';
+        this.blockType = 'Ttype';
 
         this.state = {
             block: this._bb.block(this.blockType),
         };
+
+        this._moveToBottom = 0;
+        this.blockControll = this.blockControll.bind(this);
     }
+
+    blockControll = (event) => {
+        // TODO find the reason of lot of calling
+        event.preventDefault();
+        console.log(event.keyCode);
+
+        switch(event.keyCode) {
+            case 37:
+                this.state.block.moveLeft(10);
+                return;
+            case 39:
+                this.state.block.moveRight(10, 300);
+                return;
+            case 40:
+                this.state.block.moveDown(10, 500);
+                return;
+            default:
+                return;
+        }
+    };
+
 
     componentDidUpdate() {
 
@@ -51,7 +77,7 @@ class Canvas extends React.Component {
         const height = canvas.height;
 
         // console.log(this.state.block.getYDimensions()[0]);
-        if(this.state.block.getYDimensions()[0] === 500) {
+        if(this.state.block.getYDimensions()[0] >= 500) {
             let blockTypes = [
                 'Itype',
                 'Otype',
@@ -59,7 +85,6 @@ class Canvas extends React.Component {
                 'Stype',
                 'Ttype'
             ];
-
             this.setState({
                 block: this._bb.block(blockTypes[Math.floor(Math.random() * blockTypes.length)])
             });
@@ -69,10 +94,18 @@ class Canvas extends React.Component {
 
         ctx.clearRect(0, 0, width, height);
 
-        this._bb.builder(this.state.block, ctx);
-        this.state.block.moveDown(20, 500);
 
+        this._bb.builder(this.state.block, ctx);
+        if (this._moveToBottom === 50) {
+            this.state.block.moveDown(20, 500);
+            this._moveToBottom = 0;
+        }
+        
         ctx.restore();
+
+        this._moveToBottom += 5;
+
+        // document.removeEventListener('keydown', blockControll);
 }
 
 

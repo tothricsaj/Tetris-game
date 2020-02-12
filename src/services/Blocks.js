@@ -48,20 +48,21 @@ export class Block {
     }
 
     moveRight(rightValue, edge) {
-        if((this.y1 + rightValue) < edge) {
-            this.y1 += rightValue;
-            this.y2 += rightValue;
-            this.y3 += rightValue;
-            this.y4 += rightValue;
+        // TODO: find a common solution for every block type
+        if((this.x3 + 10 + rightValue) <= edge) {
+            this.x1 += rightValue;
+            this.x2 += rightValue;
+            this.x3 += rightValue;
+            this.x4 += rightValue;
         }
     }
 
     moveLeft(leftValue) {
-        if ((this.y1 - leftValue) > 0) {
-            this.y1 -= leftValue;
-            this.y2 -= leftValue;
-            this.y3 -= leftValue;
-            this.y4 -= leftValue;
+        if ((this.x1 - leftValue) >= 0) {
+            this.x1 -= leftValue;
+            this.x2 -= leftValue;
+            this.x3 -= leftValue;
+            this.x4 -= leftValue;
         }
     }
 }
