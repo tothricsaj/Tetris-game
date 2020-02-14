@@ -42,7 +42,7 @@ class Canvas extends React.Component {
 
         // I guess that a more subtle way exists.....
         this.gamePlace = [];
-        for(let i=0; i<5; i++) this.gamePlace.push(new Array(3).fill(null));
+        for(let i=0; i<200; i++) this.gamePlace.push(new Array(300).fill(null));
 
         this.state = {
             block: this._bb.block(this.blockType),
@@ -78,12 +78,16 @@ class Canvas extends React.Component {
         const ctx = canvas.getContext('2d');
         const width = canvas.width;
         const height = canvas.height;
+        const currBlock = this.state.block;
 
         // console.log(this.state.block.getYDimensions()[0]);
         
         // Here we drop a new block element 
-        // Furthermore this is the a new loop, indeed
-        if(this.state.block.getYDimensions()[0] >= 100) {
+        // Furthermore this is the begining (of a beautiful friendship) a new loop, indeed
+        if(
+            currBlock.getYDimensions()[0] >= 200 ||
+            currBlock.bottomEdge.x + 10 === this.gamePlace[currBlock.x]
+        ) {
             let blockTypes = [
                 'Itype',
                 'Otype',
@@ -91,6 +95,13 @@ class Canvas extends React.Component {
                 'Stype',
                 'Ttype'
             ];
+
+            this.gamePlace[currBlock.x1][currBlock.y1] = {
+                x: currBlock.x1,
+                y: currBlock.y1,
+                color: 'orange'
+            };
+
             this.setState({
                 block: this._bb.block(blockTypes[Math.floor(Math.random() * blockTypes.length)])
             });
@@ -100,12 +111,27 @@ class Canvas extends React.Component {
 
         ctx.clearRect(0, 0, width, height);
 
-
         this._bb.builder(this.state.block, ctx);
+
+        this.gamePlace.forEach((arr) => {
+            arr.forEach((obj) => {
+                if (!!obj) {
+                    ctx.fillStyle = obj.color;
+                    ctx.fillRect(obj.x, obj.y, 10, 10);
+                }
+            });
+        });
+
+
         if (this._moveToBottom === 50) {
             this.state.block.moveDown(20, 500);
             this._moveToBottom = 0;
         }
+
+        // ctx.fillStyle = this.gamePlace[]
+        // ctx.fillRect(block.x1, block.y1, block.width, block.height);
+        //
+        
         
         ctx.restore();
 
