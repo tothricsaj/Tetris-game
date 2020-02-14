@@ -96,11 +96,16 @@ class Canvas extends React.Component {
                 'Ttype'
             ];
 
-            this.gamePlace[currBlock.x1][currBlock.y1] = {
-                x: currBlock.x1,
-                y: currBlock.y1,
-                color: 'orange'
-            };
+            let xDim = currBlock.getXDimensions();
+            let yDim = currBlock.getYDimensions();
+
+            xDim.forEach((dimX, i) => {
+                this.gamePlace[dimX][yDim[i]] = {
+                    x: dimX,
+                    y: yDim[i],
+                    color: currBlock.color
+                };
+            });
 
             this.setState({
                 block: this._bb.block(blockTypes[Math.floor(Math.random() * blockTypes.length)])
