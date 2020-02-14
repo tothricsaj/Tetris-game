@@ -42,26 +42,34 @@ export class Block {
             this.y3 += downValue;
             this.y4 += downValue;
         }
-
-
-        // window.requestAnimationFrame(this.moveDown);
     }
 
     moveRight(rightValue, edge) {
-        if((this.y1 + rightValue) < edge) {
-            this.y1 += rightValue;
-            this.y2 += rightValue;
-            this.y3 += rightValue;
-            this.y4 += rightValue;
+        // TODO: find a common solution for every block type
+        if((this.x3 + 10 + rightValue) <= edge) {
+            this.x1 += rightValue;
+            this.x2 += rightValue;
+            this.x3 += rightValue;
+            this.x4 += rightValue;
         }
     }
 
     moveLeft(leftValue) {
-        if ((this.y1 - leftValue) > 0) {
-            this.y1 -= leftValue;
-            this.y2 -= leftValue;
-            this.y3 -= leftValue;
-            this.y4 -= leftValue;
+        if ((this.x1 - leftValue) >= 0) {
+            this.x1 -= leftValue;
+            this.x2 -= leftValue;
+            this.x3 -= leftValue;
+            this.x4 -= leftValue;
+        }
+    }
+
+    copyParams() {
+        return {
+            x1: this.x1, y1: this.y1,
+            x2: this.x2, y2: this.y2,
+            x3: this.x3, y3: this.y3,
+            x4: this.x4, y4: this.y4,
+            color: this.color
         }
     }
 }
@@ -82,7 +90,10 @@ export class TBlock extends Block {
 
         this.color = 'rgb(30, 140, 180)';
 
-        console.log('TBlock was made by builder');
+        this.bottomEdge = {
+            x: this.x4,
+            y: this.y4
+        }
     }
 }
 
@@ -102,7 +113,10 @@ export class SBlock extends Block {
 
         this.color = 'rgb(230, 100, 80)'
 
-        console.log('SBlock was made by builder');
+        this.bottomEdge = {
+            x: this.x4,
+            y: this.y4
+        }
     }
 }
 
@@ -120,6 +134,12 @@ export class ZBlock extends Block {
         this.y4 = 10;
 
         this.color = 'rgb(200, 160, 90)';
+
+        this.bottomEdge = {
+            x: this.x4,
+            y: this.y4
+        }
+
     }
 }
 
@@ -138,6 +158,12 @@ export class OBlock extends Block {
         this.y4 = 10;
 
         this.color = 'rgb(230, 140, 180)';
+
+        this.bottomEdge = {
+            x: this.x4,
+            y: this.y4
+        }
+
     }
 }
 
@@ -156,5 +182,10 @@ export class IBlock extends Block {
         this.y4 = 30;
 
         this.color = 'rgb(140, 180, 100)';
+
+        this.bottomEdge = {
+            x: this.x4,
+            y: this.y4
+        }
     }
 }
