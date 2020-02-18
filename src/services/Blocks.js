@@ -14,7 +14,7 @@ export class Block {
 
         this.width = 10;
         this.height = 10;
-        this.moveDown = this.moveDown.bind(this);
+        // this.moveDown = this.moveDown.bind(this);
     }
 
     getXDimensions() {
@@ -74,6 +74,8 @@ export class Block {
     }
 }
 
+// TODO lblock is forgotten. Make it!!!!!
+
 export class TBlock extends Block {
     constructor() {
         super();
@@ -90,10 +92,19 @@ export class TBlock extends Block {
 
         this.color = 'rgb(30, 140, 180)';
 
-        this.bottomEdge = {
-            x: this.x4,
-            y: this.y4
-        }
+        this.bottomEdge = [
+            {x: this.x1, y: this.y1},
+            {x: this.x3, y: this.y3},
+            {x: this.x4, y: this.y4}
+        ];
+    }
+
+    set currentEdge(block) {
+        this.bottomEdge = [
+            {x: block.x1, y: block.y1},
+            {x: block.x3, y: block.y3},
+            {x: block.x4, y: block.y4}
+        ]
     }
 }
 

@@ -54,7 +54,7 @@ class Canvas extends React.Component {
 
     blockControll = (event) => {
         event.preventDefault();
-        console.log(event.keyCode);
+        // console.log(event.keyCode);
 
         switch(event.keyCode) {
             case 37:
@@ -80,21 +80,50 @@ class Canvas extends React.Component {
         const height = canvas.height;
         const currBlock = this.state.block;
 
+        let collision = false;
+
         // console.log(this.state.block.getYDimensions()[0]);
+        
+        currBlock.bottomEdge.forEach((val, i) => {
+            let cordinateX,
+                cordinateY;
+
+            if(!!this.gamePlace[val.x][val.y]) {
+                cordinateX = this.gamePlace[val.x][val.y].x;
+                cordinateY = this.gamePlace[val.x][val.y].y;
+
+                console.log(`cordinateY -> ${cordinateY}`)
+                console.log(`val.x -> ${val.x} ; val.y -> ${val.y-10}`)
+                if(
+                    val.x === cordinateX  &&
+                    val.y === cordinateY
+                ) {
+                    console.log('Got it....!!!!!!');
+                    collision = true;
+                }
+            }
+        });
+
         
         // Here we drop a new block element 
         // Furthermore this is the begining (of a beautiful friendship) a new loop, indeed
-        if(
-            currBlock.getYDimensions()[0] >= 200 ||
-            currBlock.bottomEdge.x + 10 === this.gamePlace[currBlock.x]
-        ) {
+        if(currBlock.getYDimensions()[0] >= 200 || collision) {
+            // let blockTypes = [
+            //     'Itype',
+            //     'Otype',
+            //     'Ztype',
+            //     'Stype',
+            //     'Ttype'
+            // ];
+
             let blockTypes = [
-                'Itype',
-                'Otype',
-                'Ztype',
-                'Stype',
+                'Ttype',
+                'Ttype',
+                'Ttype',
+                'Ttype',
                 'Ttype'
             ];
+
 
             let xDim = currBlock.getXDimensions();
             let yDim = currBlock.getYDimensions();
@@ -110,6 +139,8 @@ class Canvas extends React.Component {
             this.setState({
                 block: this._bb.block(blockTypes[Math.floor(Math.random() * blockTypes.length)])
             });
+
+            collision = false;
         }
 
         ctx.save();
@@ -141,6 +172,8 @@ class Canvas extends React.Component {
         ctx.restore();
 
         this._moveToBottom += 5;
+
+        this.state.block.currentEdge = this.state.block;
 
         // document.removeEventListener('keydown', blockControll);
     }
