@@ -42,7 +42,7 @@ class Canvas extends React.Component {
 
         // I guess that a more subtle way exists.....
         this.gamePlace = [];
-        for(let i=0; i<200; i++) this.gamePlace.push(new Array(300).fill(null));
+        for(let i=0; i<50; i++) this.gamePlace.push(new Array(50).fill(null));
 
         this.state = {
             block: this._bb.block(this.blockType),
@@ -107,7 +107,7 @@ class Canvas extends React.Component {
         
         // Here we drop a new block element 
         // Furthermore this is the begining (of a beautiful friendship) a new loop, indeed
-        if(currBlock.getYDimensions()[0] >= 200 || collision) {
+        if(currBlock.getYDimensions()[0] >= 50 || collision) {
             // let blockTypes = [
             //     'Itype',
             //     'Otype',
@@ -181,7 +181,7 @@ class Canvas extends React.Component {
     render() {
         return (
             <div id="gameView">
-                <canvas ref={this.canvas} id="canvas" width="300" height="500" />
+                <canvas ref={this.canvas} id="canvas" width="50" height="50" />
             </div>
         )
     }
