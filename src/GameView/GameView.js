@@ -40,9 +40,14 @@ class Canvas extends React.Component {
         this.canvas = React.createRef();
         this.blockType = 'TestType';
 
+        this.testBool = true;
+
         // I guess that a more subtle way exists.....
         this.gamePlace = [];
-        for(let i=0; i<50; i++) this.gamePlace.push(new Array(50).fill(null));
+        for(let i=0; i<61; i++) this.gamePlace.push(new Array(50).fill(null));
+
+        // this.gamePlace[59][49] = 'fooBar';
+        // console.table(this.gamePlace[59]);
 
         this.state = {
             block: this._bb.block(this.blockType),
@@ -83,15 +88,16 @@ class Canvas extends React.Component {
         let collision = false;
 
         // console.log(this.state.block.getYDimensions()[0]);
-        console.log(currBlock.constructor.name);
         
+        // console.table(this.gamePlace)
+
         currBlock.bottomEdge.forEach((val, i) => {
             let cordinateX,
                 cordinateY;
 
-            if(!!this.gamePlace[val.x][val.y]) {
-                cordinateX = this.gamePlace[val.x][val.y].x;
-                cordinateY = this.gamePlace[val.x][val.y].y;
+            if(!!this.gamePlace[val.y][val.x]) {
+                cordinateX = this.gamePlace[val.y][val.x].x;
+                cordinateY = this.gamePlace[val.y][val.x].y;
 
                 console.log(`cordinateY -> ${cordinateY} ; val.y -> ${val.y-10}`)
                 if(
@@ -107,7 +113,7 @@ class Canvas extends React.Component {
         
         // Here we drop a new block element 
         // Furthermore this is the begining (of a beautiful friendship) a new loop, indeed
-        if(currBlock.getYDimensions()[0] >= 50 || collision) {
+        if(currBlock.getYDimensions()[0] >= 60 || collision) {
             // let blockTypes = [
             //     'Itype',
             //     'Otype',
@@ -129,12 +135,15 @@ class Canvas extends React.Component {
             let yDim = currBlock.getYDimensions();
 
             xDim.forEach((dimX, i) => {
-                this.gamePlace[dimX][yDim[i]] = {
+                this.gamePlace[yDim[i]][dimX] = {
                     x: dimX,
                     y: yDim[i],
                     color: currBlock.color
                 };
             });
+
+            // console.table(this.gamePlace[60]);
+            // this.testBool = false;
 
             this.setState({
                 block: this._bb.block(blockTypes[Math.floor(Math.random() * blockTypes.length)])
@@ -152,8 +161,9 @@ class Canvas extends React.Component {
         this.gamePlace.forEach((arr) => {
             arr.forEach((obj) => {
                 if (!!obj) {
+                    console.log('I am drawing!!!');
                     ctx.fillStyle = obj.color;
-                    ctx.fillRect(obj.x, obj.y, 10, 10);
+                    ctx.fillRect(obj.y, obj.x, 10, 10);
                 }
             });
         });
