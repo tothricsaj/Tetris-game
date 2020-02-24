@@ -38,7 +38,7 @@ class Canvas extends React.Component {
         
         this._bb = new BlockBuilder();
         this.canvas = React.createRef();
-        this.blockType = 'Ttype';
+        this.blockType = 'TestType';
 
         // I guess that a more subtle way exists.....
         this.gamePlace = [];
@@ -83,6 +83,7 @@ class Canvas extends React.Component {
         let collision = false;
 
         // console.log(this.state.block.getYDimensions()[0]);
+        console.log(currBlock.constructor.name);
         
         currBlock.bottomEdge.forEach((val, i) => {
             let cordinateX,
@@ -92,8 +93,7 @@ class Canvas extends React.Component {
                 cordinateX = this.gamePlace[val.x][val.y].x;
                 cordinateY = this.gamePlace[val.x][val.y].y;
 
-                console.log(`cordinateY -> ${cordinateY}`)
-                console.log(`val.x -> ${val.x} ; val.y -> ${val.y-10}`)
+                console.log(`cordinateY -> ${cordinateY} ; val.y -> ${val.y-10}`)
                 if(
                     val.x === cordinateX  &&
                     val.y === cordinateY
@@ -117,11 +117,11 @@ class Canvas extends React.Component {
             // ];
 
             let blockTypes = [
-                'Ttype',
-                'Ttype',
-                'Ttype',
-                'Ttype',
-                'Ttype'
+                'TestType',
+                'TestType',
+                'TestType',
+                'TestType',
+                'TestType'
             ];
 
 

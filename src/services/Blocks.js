@@ -74,6 +74,27 @@ export class Block {
     }
 }
 
+export class TestBlock extends Block {
+    constructor() {
+        super();
+
+        this.x1 = 138;
+        this.y1 = 0;
+
+        this.color = 'orange'
+
+        this.bottomEdge = [
+            {x: this.x1, y: this.y1}
+        ]
+    }
+
+    set currentEdge(block) {
+        this.bottomEdge = [
+            {x: block.x1, y: block.y1},
+        ]
+    }
+}
+
 // TODO lblock is forgotten. Make it!!!!!
 
 export class TBlock extends Block {

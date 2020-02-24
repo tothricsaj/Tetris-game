@@ -1,4 +1,4 @@
-import { TBlock, SBlock, ZBlock, OBlock, IBlock } from './Blocks.js';
+import { TBlock, SBlock, ZBlock, OBlock, IBlock, TestBlock } from './Blocks.js';
 
 export class BlockBuilder {
     constructor() {
@@ -28,7 +28,7 @@ export class BlockBuilder {
                 blockType = 'Stype';
                 return new SBlock();
 
-        case 'Ztype':
+            case 'Ztype':
                 
                 blockType = 'Ztype';
                 return new ZBlock();
@@ -42,6 +42,12 @@ export class BlockBuilder {
                 
                 blockType = 'Itype';
                 return new IBlock();
+
+            case 'TestType':
+                
+                blockType = 'TestType';
+                return new TestBlock();
+
 
             default:
                 return 'No set type'
