@@ -93,6 +93,44 @@ export class TestBlock extends Block {
             {x: block.x1, y: block.y1},
         ]
     }
+
+    getXDimensions() {
+        return [
+            this.x1,
+        ];
+    }
+
+    getYDimensions() {
+        return [
+            this.y1,
+        ];
+    }
+
+    moveDown(downValue, edge) {
+        if ((this.y1 + downValue) <= edge) {
+            this.y1 += downValue;
+        }
+    }
+
+    moveRight(rightValue, edge) {
+        // TODO: find a common solution for every block type
+        if((this.x3 + 10 + rightValue) <= edge) {
+            this.x1 += rightValue;
+        }
+    }
+
+    moveLeft(leftValue) {
+        if ((this.x1 - leftValue) >= 0) {
+            this.x1 -= leftValue;
+        }
+    }
+
+    copyParams() {
+        return {
+            x1: this.x1, y1: this.y1,
+            color: this.color
+        }
+    }
 }
 
 // TODO lblock is forgotten. Make it!!!!!
