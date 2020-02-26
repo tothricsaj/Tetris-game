@@ -42,13 +42,12 @@ class Canvas extends React.Component {
 
         this.state = {
             block: this._bb.block(this.blockType),
-            stopFlow: false,
         };
 
         this._moveToBottom = 0;
 
         this.blockControll = this.blockControll.bind(this);
-        this.stopFlow = this.stopFlow.bind(this);
+        this.freezeTheState = this.freezeTheState.bind(this);
     }
 
     blockControll = (event) => {
@@ -99,8 +98,6 @@ class Canvas extends React.Component {
                 ...this.state,
                 block: this._bb.block(blockTypes[Math.floor(Math.random() * blockTypes.length)])
             });
-
-            console.log(this.state)
         }
 
         ctx.save();
@@ -121,10 +118,8 @@ class Canvas extends React.Component {
         // document.removeEventListener('keydown', blockControll);
     }
 
-    stopFlow() {
-        this.setState({
-            ...this.state, stopFlow: !this.state.stopFlow
-        });
+    freezeTheState() {
+        console.table(this.state)
     }
 
     render() {
@@ -132,7 +127,7 @@ class Canvas extends React.Component {
             <div id="gameView">
                 <canvas ref={this.canvas} id="canvas" width="60" height="90" />
 
-                <button onClick={this.stopFlow}>Stop</button>
+                <button onClick={this.freezeTheState}>Stop</button>
             </div>
         )
     }
