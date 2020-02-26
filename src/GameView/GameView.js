@@ -40,6 +40,10 @@ class Canvas extends React.Component {
         this.canvas = React.createRef();
         this.blockType = 'Testtype';
 
+        // I guess that a more subtle way exists.....
+        this.gamePlace = [];
+        for(let i=0; i<90; i++) this.gamePlace.push(new Array(60).fill(null));
+
         this.state = {
             block: this._bb.block(this.blockType),
         };
@@ -119,7 +123,7 @@ class Canvas extends React.Component {
     }
 
     freezeTheState() {
-        console.table(this.state)
+        console.table(this.gamePlace)
     }
 
     render() {
