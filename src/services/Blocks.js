@@ -67,6 +67,18 @@ export class Block {
     }
 }
 
+export class TestBlock extends Block {
+    constructor() {
+        super();
+
+        this.x1 = 148;
+
+        this.y1 = 0;
+
+        this.color = 'orange';
+    }
+}
+
 export class TBlock extends Block {
     constructor() {
         super();

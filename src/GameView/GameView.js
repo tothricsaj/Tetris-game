@@ -38,7 +38,7 @@ class Canvas extends React.Component {
         
         this._bb = new BlockBuilder();
         this.canvas = React.createRef();
-        this.blockType = 'Ttype';
+        this.blockType = 'Testtype';
 
         this.state = {
             block: this._bb.block(this.blockType),
@@ -77,12 +77,20 @@ class Canvas extends React.Component {
 
         // console.log(this.state.block.getYDimensions()[0]);
         if(this.state.block.getYDimensions()[0] >= 500) {
+            // let blockTypes = [
+            //     'Itype',
+            //     'Otype',
+            //     'Ztype',
+            //     'Stype',
+            //     'Ttype'
+            // ];
+
             let blockTypes = [
-                'Itype',
-                'Otype',
-                'Ztype',
-                'Stype',
-                'Ttype'
+                'Testtype',
+                'Testtype',
+                'Testtype',
+                'Testtype',
+                'Testtype'
             ];
             this.setState({
                 block: this._bb.block(blockTypes[Math.floor(Math.random() * blockTypes.length)])
@@ -93,8 +101,8 @@ class Canvas extends React.Component {
 
         ctx.clearRect(0, 0, width, height);
 
-
         this._bb.builder(this.state.block, ctx);
+
         if (this._moveToBottom === 50) {
             this.state.block.moveDown(20, 500);
             this._moveToBottom = 0;
