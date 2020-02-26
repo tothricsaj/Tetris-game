@@ -44,7 +44,7 @@ class Canvas extends React.Component {
 
         // I guess that a more subtle way exists.....
         this.gamePlace = [];
-        for(let i=0; i<61; i++) this.gamePlace.push(new Array(50).fill(null));
+        for(let i=0; i<75; i++) this.gamePlace.push(new Array(50).fill(null));
 
         // this.gamePlace[59][49] = 'fooBar';
         // console.table(this.gamePlace[59]);
@@ -202,7 +202,7 @@ class Canvas extends React.Component {
     render() {
         return (
             <div id="gameView">
-                <canvas ref={this.canvas} id="canvas" width="50" height="80" />
+                <canvas ref={this.canvas} id="canvas" width="50" height="70" />
             </div>
         )
     }
