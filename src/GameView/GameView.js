@@ -130,6 +130,14 @@ class Canvas extends React.Component {
                 'TestType'
             ];
 
+            // let blockTypes = [
+            //     'Ttype',
+            //     'Ttype',
+            //     'Ttype',
+            //     'Ttype',
+            //     'Ttype'
+            // ];
+
 
             let xDim = currBlock.getXDimensions();
             let yDim = currBlock.getYDimensions();
@@ -161,13 +169,16 @@ class Canvas extends React.Component {
         this.gamePlace.forEach((arr) => {
             arr.forEach((obj) => {
                 if (!!obj) {
-                    console.log('I am drawing!!!');
+                    // console.log('I am drawing!!!');
+                    // console.table(obj)
                     ctx.fillStyle = obj.color;
-                    ctx.fillRect(obj.y, obj.x, 10, 10);
+                    ctx.fillRect(obj.x, obj.y, 10, 10);
                 }
             });
         });
 
+        ctx.fillStyle = 'pink';
+        ctx.fillRect(15, 50, 10, 10);
 
         if (this._moveToBottom === 50) {
             this.state.block.moveDown(20, 500);
@@ -191,7 +202,7 @@ class Canvas extends React.Component {
     render() {
         return (
             <div id="gameView">
-                <canvas ref={this.canvas} id="canvas" width="50" height="50" />
+                <canvas ref={this.canvas} id="canvas" width="50" height="80" />
             </div>
         )
     }
