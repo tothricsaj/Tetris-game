@@ -76,7 +76,7 @@ class Canvas extends React.Component {
         const height = canvas.height;
 
         // console.log(this.state.block.getYDimensions()[0]);
-        if(this.state.block.getYDimensions()[0] >= 500) {
+        if(this.state.block.getYDimensions()[0] >= 50) {
             // let blockTypes = [
             //     'Itype',
             //     'Otype',
@@ -119,7 +119,7 @@ class Canvas extends React.Component {
     render() {
         return (
             <div id="gameView">
-                <canvas ref={this.canvas} id="canvas" width="300" height="500" />
+                <canvas ref={this.canvas} id="canvas" width="300" height="50" />
             </div>
         )
     }
