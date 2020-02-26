@@ -71,7 +71,7 @@ export class TestBlock extends Block {
     constructor() {
         super();
 
-        this.x1 = 148;
+        this.x1 = 25;
 
         this.y1 = 0;
 

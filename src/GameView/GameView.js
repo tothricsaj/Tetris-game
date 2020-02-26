@@ -60,7 +60,7 @@ class Canvas extends React.Component {
                 this.state.block.moveRight(10, 300);
                 return;
             case 40:
-                this.state.block.moveDown(10, 500);
+                this.state.block.moveDown(10, 70);
                 return;
             default:
                 return;
@@ -76,7 +76,7 @@ class Canvas extends React.Component {
         const height = canvas.height;
 
         // console.log(this.state.block.getYDimensions()[0]);
-        if(this.state.block.getYDimensions()[0] >= 50) {
+        if(this.state.block.getYDimensions()[0] >= 90) {
             // let blockTypes = [
             //     'Itype',
             //     'Otype',
@@ -119,7 +119,7 @@ class Canvas extends React.Component {
     render() {
         return (
             <div id="gameView">
-                <canvas ref={this.canvas} id="canvas" width="300" height="50" />
+                <canvas ref={this.canvas} id="canvas" width="60" height="90" />
             </div>
         )
     }
