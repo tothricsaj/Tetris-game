@@ -44,8 +44,15 @@ class Canvas extends React.Component {
         this.gamePlace = [];
         for(let i=0; i<90; i++) this.gamePlace.push(new Array(60).fill(null));
 
+        this.gamePlace[89][24] = {
+            x: 15,
+            y: 80,
+            color: 'green'
+        };
+
         this.state = {
             block: this._bb.block(this.blockType),
+            stopFlow: false,
         };
 
         this._moveToBottom = 0;
@@ -107,8 +114,31 @@ class Canvas extends React.Component {
         ctx.save();
 
         ctx.clearRect(0, 0, width, height);
+        
+        // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        // DRAWING SECTION
+        // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        
+        // this builder is drawing the moving element
+        this._bb.builder(this.state.block, ctx); 
 
-        this._bb.builder(this.state.block, ctx);
+        this.gamePlace.forEach((row, i) => {
+            row.forEach((obj, i) => {
+                if(!!obj) {
+                    ctx.fillStyle = obj.color;
+                    ctx.fillRect(obj.x, obj.y, 10, 10);
+
+                    if(this.state.stopFlow) console.table(obj);
+
+                    // console.log('drawing')
+                }
+            });
+        });
+
+        ctx.fillStyle = 'pink';
+        ctx.fillRect(35, 80, 10, 10);
+
+        // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
         if (this._moveToBottom === 50) {
             this.state.block.moveDown(20, 500);
@@ -123,7 +153,12 @@ class Canvas extends React.Component {
     }
 
     freezeTheState() {
+        this.setState({
+            ...this.state,
+            stopFlow: !this.state.stopFlow
+        })
         console.table(this.gamePlace)
+        console.table(this.gamePlace[89][24]);
     }
 
     render() {
