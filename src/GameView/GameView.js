@@ -45,17 +45,17 @@ class Canvas extends React.Component {
         for(let i=0; i<90; i++) this.gamePlace.push(new Array(60).fill(null));
 
         this.gamePlace[89][24] = {
-            x: 15,
+            x: 25,
             y: 80,
             color: 'green'
         };
 
         this.state = {
             block: this._bb.block(this.blockType),
-            stopFlow: false,
+            stopFlow: false, // this is due to the test
         };
 
-        this._moveToBottom = 0;
+        this._moveToBottom = 0; // this is contorll the speed of block's moving
 
         this.blockControll = this.blockControll.bind(this);
         this.freezeTheState = this.freezeTheState.bind(this);
@@ -122,6 +122,7 @@ class Canvas extends React.Component {
         // this builder is drawing the moving element
         this._bb.builder(this.state.block, ctx); 
 
+        // draw what is in gamePlace
         this.gamePlace.forEach((row, i) => {
             row.forEach((obj, i) => {
                 if(!!obj) {
@@ -135,12 +136,14 @@ class Canvas extends React.Component {
             });
         });
 
+        // reference block due to test
         ctx.fillStyle = 'pink';
         ctx.fillRect(35, 80, 10, 10);
 
         // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-        if (this._moveToBottom === 50) {
+        if (this._moveToBottom === 80) {
+            // Here the controll the speed of the block's moving
             this.state.block.moveDown(20, 500);
             this._moveToBottom = 0;
         }
@@ -153,6 +156,8 @@ class Canvas extends React.Component {
     }
 
     freezeTheState() {
+        // this functon is owing to test. Here will console
+        // informations about things like gamePlace and more
         this.setState({
             ...this.state,
             stopFlow: !this.state.stopFlow
@@ -166,6 +171,10 @@ class Canvas extends React.Component {
             <div id="gameView">
                 <canvas ref={this.canvas} id="canvas" width="60" height="90" />
 
+                {/* 
+                    this button is just because of testing 
+                    After the develop you should delete it!!!!!!
+                */}
                 <button onClick={this.freezeTheState}>Stop</button>
             </div>
         )
