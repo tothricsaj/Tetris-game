@@ -49,7 +49,7 @@ class Canvas extends React.Component {
         /////////////////////////////////////////////////////
 
         this.gamePlace[89][24] = {
-            x: 25,
+            x: 15,
             y: 80,
             color: 'green'
         };
@@ -119,15 +119,16 @@ class Canvas extends React.Component {
                     );
                     // console.table(this.gamePlace[rowIndex][i])
                     // console.table(this.state.block)
-                    if(matchDim) {
+                    if(matchDim || this.state.block.getYDimensions()[0] >= 90) {
                         collosion = true;
 
                         console.table({
                             rowIndex: rowIndex-1,
-                            index: i
+                            index: i,
+                            currentBlockX: this.state.block.getXDimensions()[0]
                         })
 
-                        this.gamePlace[rowIndex-1][i] = {
+                        this.gamePlace[rowIndex-1][this.state.block.getXDimensions()[0]] = {
                             x: this.state.block.getXDimensions()[0],
                             y: this.state.block.getYDimensions()[0]-10,
                             color: this.state.block.color
