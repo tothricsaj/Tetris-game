@@ -89,7 +89,7 @@ class Canvas extends React.Component {
         const height = canvas.height;
 
         console.log(this.state.block.getYDimensions()[0]);
-        if(this.state.block.getYDimensions()[0] >= 100) {
+        if(this.state.block.getYDimensions()[0] >= 90) {
             // let blockTypes = [
             //     'Itype',
             //     'Otype',
@@ -144,13 +144,13 @@ class Canvas extends React.Component {
 
         if (this._moveToBottom === 80) {
             // Here the controll the speed of the block's moving
-            this.state.block.moveDown(20, 500);
+            this.state.block.moveDown(10, 500);
             this._moveToBottom = 0;
         }
         
         ctx.restore();
 
-        this._moveToBottom += 5;
+        this._moveToBottom += 8; // bigger number, faster move
 
         // document.removeEventListener('keydown', blockControll);
     }
