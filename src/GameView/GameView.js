@@ -45,7 +45,7 @@ class Canvas extends React.Component {
         for(let i=0; i<90; i++) this.gamePlace.push(new Array(60).fill(null));
 
         this.gamePlace[89][24] = {
-            x: 25,
+            x: 15,
             y: 80,
             color: 'green'
         };
@@ -88,8 +88,8 @@ class Canvas extends React.Component {
         const width = canvas.width;
         const height = canvas.height;
 
-        // console.log(this.state.block.getYDimensions()[0]);
-        if(this.state.block.getYDimensions()[0] >= 90) {
+        console.log(this.state.block.getYDimensions()[0]);
+        if(this.state.block.getYDimensions()[0] >= 100) {
             // let blockTypes = [
             //     'Itype',
             //     'Otype',
