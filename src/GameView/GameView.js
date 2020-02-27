@@ -44,23 +44,29 @@ class Canvas extends React.Component {
         this.gamePlace = [];
         for(let i=0; i<90; i++) this.gamePlace.push(new Array(60).fill(null));
 
+        /////////////////////////////////////////////////////
+        ///////////// Test block in gamePlace ///////////////
+        /////////////////////////////////////////////////////
+
         this.gamePlace[89][24] = {
             x: 25,
             y: 80,
             color: 'green'
         };
 
-        this.gamePlace[88][24] = {
-            x: 25,
-            y: 70,
-            color: 'red'
-        };
+        // this.gamePlace[88][24] = {
+        //     x: 25,
+        //     y: 70,
+        //     color: 'red'
+        // };
 
-        this.gamePlace[89][23] = {
-            x: 15,
-            y: 80,
-            color: 'lightgreen'
-        };
+        // this.gamePlace[89][23] = {
+        //     x: 15,
+        //     y: 80,
+        //     color: 'lightgreen'
+        // };
+
+        /////////////////////////////////////////////////////
 
         this.state = {
             block: this._bb.block(this.blockType),
@@ -107,6 +113,7 @@ class Canvas extends React.Component {
             row.forEach((obj, i )=> {
                 if(!!obj) {
                     let matchDim = (
+                        // TODO it may change when the comples bolcks will come
                         obj.x === this.state.block.getXDimensions()[0] &&
                         obj.y === this.state.block.getYDimensions()[0]
                     );
@@ -114,6 +121,20 @@ class Canvas extends React.Component {
                     // console.table(this.state.block)
                     if(matchDim) {
                         collosion = true;
+
+                        console.table({
+                            rowIndex: rowIndex-1,
+                            index: i
+                        })
+
+                        this.gamePlace[rowIndex-1][i] = {
+                            x: this.state.block.getXDimensions()[0],
+                            y: this.state.block.getYDimensions()[0]-10,
+                            color: this.state.block.color
+                        }
+
+                        console.table(this.gamePlace[rowIndex-1][i])
+
                         return true;
                     }
                 }
@@ -161,7 +182,7 @@ class Canvas extends React.Component {
                     ctx.fillStyle = obj.color;
                     ctx.fillRect(obj.x, obj.y, 10, 10);
 
-                    if(this.state.stopFlow) console.table(obj);
+                    // if(this.state.stopFlow) console.table(obj);
 
                     // console.log('drawing')
                 }
@@ -194,8 +215,8 @@ class Canvas extends React.Component {
             ...this.state,
             stopFlow: !this.state.stopFlow
         })
-        console.table(this.gamePlace)
-        console.table(this.gamePlace[89][24]);
+        // console.table(this.gamePlace)
+        console.table(this.gamePlace[88][24]);
     }
 
     render() {
