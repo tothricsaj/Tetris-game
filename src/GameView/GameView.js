@@ -45,9 +45,21 @@ class Canvas extends React.Component {
         for(let i=0; i<90; i++) this.gamePlace.push(new Array(60).fill(null));
 
         this.gamePlace[89][24] = {
-            x: 15,
+            x: 25,
             y: 80,
             color: 'green'
+        };
+
+        this.gamePlace[88][24] = {
+            x: 25,
+            y: 70,
+            color: 'red'
+        };
+
+        this.gamePlace[89][23] = {
+            x: 15,
+            y: 80,
+            color: 'lightgreen'
         };
 
         this.state = {
@@ -88,8 +100,28 @@ class Canvas extends React.Component {
         const width = canvas.width;
         const height = canvas.height;
 
-        console.log(this.state.block.getYDimensions()[0]);
-        if(this.state.block.getYDimensions()[0] >= 90) {
+        let collosion = false;
+
+        this.gamePlace.forEach((row, i) => {
+            let rowIndex = i;
+            row.forEach((obj, i )=> {
+                if(!!obj) {
+                    let matchDim = (
+                        obj.x === this.state.block.getXDimensions()[0] &&
+                        obj.y === this.state.block.getYDimensions()[0]
+                    );
+                    // console.table(this.gamePlace[rowIndex][i])
+                    // console.table(this.state.block)
+                    if(matchDim) {
+                        collosion = true;
+                        return true;
+                    }
+                }
+            });
+        });
+
+        // console.log(this.state.block.getYDimensions()[0]);
+        if(this.state.block.getYDimensions()[0] >= 90 || collosion) {
             // let blockTypes = [
             //     'Itype',
             //     'Otype',
