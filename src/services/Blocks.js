@@ -75,7 +75,8 @@ export class TestBlock extends Block {
 
         this.y1 = 0;
 
-        this.color = 'orange';
+        let colors = ['orange', 'yellow', 'lightblue', 'grey'];
+        this.color = colors[Math.floor(Math.random()*colors.length)];
     }
 }
 
