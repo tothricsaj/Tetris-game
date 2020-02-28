@@ -42,7 +42,7 @@ class Canvas extends React.Component {
 
         // I guess that a more subtle way exists.....
         this.gamePlace = [];
-        for(let i=0; i<90; i++) this.gamePlace.push(new Array(70).fill(null));
+        for(let i=0; i<9; i++) this.gamePlace.push(new Array(7).fill(null));
 
         /////////////////////////////////////////////////////
         ///////////// Test block in gamePlace ///////////////

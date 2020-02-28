@@ -47,18 +47,19 @@ export class Block {
         // window.requestAnimationFrame(this.moveDown);
     }
 
-    moveRight(rightValue, edge) {
+    moveRight() {
         // TODO: find a common solution for every block type
-        if((this.x3 + 10 + rightValue) <= edge) {
-            this.x1 += rightValue;
-            this.x2 += rightValue;
-            this.x3 += rightValue;
-            this.x4 += rightValue;
+        console.log(this.x1)
+        if(this.x1 <= 5) {
+            this.x1 += 1;
+            // this.x2 += rightValue;
+            // this.x3 += rightValue;
+            // this.x4 += rightValue;
         }
     }
 
     moveLeft() {
-        if ((this.x1) >= 1) {
+        if (this.x1 >= 1) {
             this.x1 -= 1;
             // this.x2 -= leftValue;
             // this.x3 -= leftValue;
