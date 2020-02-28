@@ -58,7 +58,7 @@ export class Block {
     }
 
     moveLeft(leftValue) {
-        if ((this.x1 - leftValue) >= 0) {
+        if ((this.x1 - leftValue) >= -3) {
             this.x1 -= leftValue;
             this.x2 -= leftValue;
             this.x3 -= leftValue;
@@ -71,7 +71,7 @@ export class TestBlock extends Block {
     constructor() {
         super();
 
-        this.x1 = 25;
+        this.x1 = 40;
 
         this.y1 = 0;
 

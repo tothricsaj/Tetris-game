@@ -42,7 +42,7 @@ class Canvas extends React.Component {
 
         // I guess that a more subtle way exists.....
         this.gamePlace = [];
-        for(let i=0; i<90; i++) this.gamePlace.push(new Array(60).fill(null));
+        for(let i=0; i<90; i++) this.gamePlace.push(new Array(80).fill(null));
 
         /////////////////////////////////////////////////////
         ///////////// Test block in gamePlace ///////////////
@@ -88,7 +88,7 @@ class Canvas extends React.Component {
                 this.state.block.moveLeft(10);
                 return;
             case 39:
-                this.state.block.moveRight(10, 300);
+                this.state.block.moveRight(10, 60);
                 return;
             case 40:
                 this.state.block.moveDown(10, 70);
@@ -223,7 +223,7 @@ class Canvas extends React.Component {
     render() {
         return (
             <div id="gameView">
-                <canvas ref={this.canvas} id="canvas" width="60" height="90" />
+                <canvas ref={this.canvas} id="canvas" width="80" height="90" />
 
                 {/* 
                     this button is just because of testing 
