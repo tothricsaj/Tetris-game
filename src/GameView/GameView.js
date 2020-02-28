@@ -48,7 +48,7 @@ class Canvas extends React.Component {
         ///////////// Test block in gamePlace ///////////////
         /////////////////////////////////////////////////////
 
-        this.gamePlace[4][4] = {
+        this.gamePlace[4][4] = { // currently, this is the initial object
             x: 0,
             y: 0,
             color: 'green'
@@ -115,7 +115,7 @@ class Canvas extends React.Component {
                     let matchDim = (
                         // TODO it may change when the comples bolcks will come
                         obj.x === this.state.block.getXDimensions()[0] &&
-                        obj.y === this.state.block.getYDimensions()[0]
+                        obj.y === this.state.block.getYDimensions()[0] + 1
                     );
                     // console.table(this.gamePlace[rowIndex][i])
                     // console.table(this.state.block)
@@ -128,13 +128,13 @@ class Canvas extends React.Component {
                             currentBlockX: this.state.block.getXDimensions()[0]
                         })
 
-                        this.gamePlace[rowIndex][this.state.block.getXDimensions()[0]] = {
+                        this.gamePlace[rowIndex - 1][this.state.block.getXDimensions()[0]] = {
                             x: this.state.block.getXDimensions()[0],
                             y: this.state.block.getYDimensions()[0],
                             color: this.state.block.color
                         }
 
-                        // console.table(this.gamePlace[rowIndex-1][i])
+                        console.table(this.gamePlace[rowIndex - 1][this.state.block.getXDimensions()[0]])
 
                         return true;
                     }
@@ -142,7 +142,7 @@ class Canvas extends React.Component {
             });
         });
 
-        console.log(this.state.block.getYDimensions()[0]);
+        // console.log(this.state.block.getYDimensions()[0]);
         if(this.state.block.getYDimensions()[0] >= 8 || collosion) {
             // let blockTypes = [
             //     'Itype',
