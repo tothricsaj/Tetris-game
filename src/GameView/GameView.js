@@ -48,7 +48,7 @@ class Canvas extends React.Component {
         ///////////// Test block in gamePlace ///////////////
         /////////////////////////////////////////////////////
 
-        this.gamePlace[4][4] = { // currently, this is the initial object
+        this.gamePlace[8][4] = { // currently, this is the initial object
             x: 0,
             y: 0,
             color: 'green'
@@ -122,19 +122,26 @@ class Canvas extends React.Component {
                     if(matchDim || this.state.block.getYDimensions()[0] >= 8) {
                         collosion = true;
 
-                        console.table({
-                            rowIndex: rowIndex,
-                            index: i,
-                            currentBlockX: this.state.block.getXDimensions()[0]
-                        })
+                        // console.table({
+                        //     rowIndex: rowIndex,
+                        //     index: i,
+                        //     currentBlockX: this.state.block.getXDimensions()[0]
+                        // })
 
-                        this.gamePlace[rowIndex - 1][this.state.block.getXDimensions()[0]] = {
-                            x: this.state.block.getXDimensions()[0],
-                            y: this.state.block.getYDimensions()[0],
-                            color: this.state.block.color
+                        if(this.gamePlace[rowIndex - 1]===undefined) console.table({x1: this.state.block.x1, y: this.state.block.y1 });
+                        try {
+                            this.gamePlace[rowIndex - 1][this.state.block.getXDimensions()[0]] = {
+                                x: this.state.block.getXDimensions()[0],
+                                y: this.state.block.getYDimensions()[0],
+                                color: this.state.block.color
+                            }
+                        } catch(e) {
+                            console.table(this.gamePlace);
+                            console.table({x1: this.state.block.x1, y1: this.state.block.y1 });
                         }
+                        
 
-                        console.table(this.gamePlace[rowIndex - 1][this.state.block.getXDimensions()[0]])
+                        // console.table(this.gamePlace[rowIndex - 1][this.state.block.getXDimensions()[0]])
 
                         return true;
                     }
@@ -219,8 +226,7 @@ class Canvas extends React.Component {
             ...this.state,
             stopFlow: !this.state.stopFlow
         })
-        // console.table(this.gamePlace)
-        console.table(this.gamePlace[88][24]);
+        console.table(this.gamePlace)
     }
 
     render() {
