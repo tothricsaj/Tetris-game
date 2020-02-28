@@ -57,12 +57,12 @@ export class Block {
         }
     }
 
-    moveLeft(leftValue) {
-        if ((this.x1 - leftValue) >= -3) {
-            this.x1 -= leftValue;
-            this.x2 -= leftValue;
-            this.x3 -= leftValue;
-            this.x4 -= leftValue;
+    moveLeft() {
+        if ((this.x1) >= 1) {
+            this.x1 -= 1;
+            // this.x2 -= leftValue;
+            // this.x3 -= leftValue;
+            // this.x4 -= leftValue;
         }
     }
 }
