@@ -35,12 +35,12 @@ export class Block {
         ];
     }
 
-    moveDown(downValue, edge) {
-        if ((this.y1 + downValue) <= edge) {
-            this.y1 += downValue;
-            this.y2 += downValue;
-            this.y3 += downValue;
-            this.y4 += downValue;
+    moveDown(edge) {
+        if (this.y1 <= edge) {
+            this.y1 += 1;
+            // this.y2 += downValue;
+            // this.y3 += downValue;
+            // this.y4 += downValue;
         }
 
 
@@ -71,7 +71,7 @@ export class TestBlock extends Block {
     constructor() {
         super();
 
-        this.x1 = 40;
+        this.x1 = 3;
 
         this.y1 = 0;
 

@@ -42,7 +42,7 @@ class Canvas extends React.Component {
 
         // I guess that a more subtle way exists.....
         this.gamePlace = [];
-        for(let i=0; i<90; i++) this.gamePlace.push(new Array(80).fill(null));
+        for(let i=0; i<90; i++) this.gamePlace.push(new Array(70).fill(null));
 
         /////////////////////////////////////////////////////
         ///////////// Test block in gamePlace ///////////////
@@ -119,18 +119,18 @@ class Canvas extends React.Component {
                     );
                     // console.table(this.gamePlace[rowIndex][i])
                     // console.table(this.state.block)
-                    if(matchDim || this.state.block.getYDimensions()[0] >= 90) {
+                    if(matchDim || this.state.block.getYDimensions()[0] >= 8) {
                         collosion = true;
 
                         console.table({
-                            rowIndex: rowIndex-1,
+                            rowIndex: rowIndex,
                             index: i,
                             currentBlockX: this.state.block.getXDimensions()[0]
                         })
 
-                        this.gamePlace[rowIndex-1][this.state.block.getXDimensions()[0]] = {
+                        this.gamePlace[rowIndex][this.state.block.getXDimensions()[0]] = {
                             x: this.state.block.getXDimensions()[0],
-                            y: this.state.block.getYDimensions()[0]-10,
+                            y: this.state.block.getYDimensions()[0],
                             color: this.state.block.color
                         }
 
@@ -143,7 +143,7 @@ class Canvas extends React.Component {
         });
 
         console.log(this.state.block.getYDimensions()[0]);
-        if(this.state.block.getYDimensions()[0] >= 90 || collosion) {
+        if(this.state.block.getYDimensions()[0] >= 8 || collosion) {
             // let blockTypes = [
             //     'Itype',
             //     'Otype',
@@ -181,7 +181,10 @@ class Canvas extends React.Component {
             row.forEach((obj, i) => {
                 if(!!obj) {
                     ctx.fillStyle = obj.color;
-                    ctx.fillRect(obj.x, obj.y, 10, 10);
+                    ctx.fillRect((obj.x * 10), (obj.y * 10), 10, 10);
+                    //
+                    // TODO: it is a good idea
+                    // this._bb.builder(obj, ctx);
 
                     // if(this.state.stopFlow) console.table(obj);
 
@@ -198,7 +201,7 @@ class Canvas extends React.Component {
 
         if (this._moveToBottom === 80) {
             // Here the controll the speed of the block's moving
-            this.state.block.moveDown(10, 500);
+            this.state.block.moveDown(90);
             this._moveToBottom = 0;
         }
         
@@ -223,7 +226,7 @@ class Canvas extends React.Component {
     render() {
         return (
             <div id="gameView">
-                <canvas ref={this.canvas} id="canvas" width="80" height="90" />
+                <canvas ref={this.canvas} id="canvas" width="70" height="90" />
 
                 {/* 
                     this button is just because of testing 
