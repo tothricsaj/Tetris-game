@@ -48,9 +48,9 @@ class Canvas extends React.Component {
         ///////////// Test block in gamePlace ///////////////
         /////////////////////////////////////////////////////
 
-        this.gamePlace[89][24] = {
-            x: 15,
-            y: 80,
+        this.gamePlace[4][4] = {
+            x: 0,
+            y: 0,
             color: 'green'
         };
 
@@ -134,7 +134,7 @@ class Canvas extends React.Component {
                             color: this.state.block.color
                         }
 
-                        console.table(this.gamePlace[rowIndex-1][i])
+                        // console.table(this.gamePlace[rowIndex-1][i])
 
                         return true;
                     }
@@ -142,7 +142,7 @@ class Canvas extends React.Component {
             });
         });
 
-        // console.log(this.state.block.getYDimensions()[0]);
+        console.log(this.state.block.getYDimensions()[0]);
         if(this.state.block.getYDimensions()[0] >= 90 || collosion) {
             // let blockTypes = [
             //     'Itype',
@@ -191,8 +191,8 @@ class Canvas extends React.Component {
         });
 
         // reference block due to test
-        ctx.fillStyle = 'pink';
-        ctx.fillRect(35, 80, 10, 10);
+        // ctx.fillStyle = 'pink';
+        // ctx.fillRect(35, 80, 10, 10);
 
         // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
