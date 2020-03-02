@@ -48,7 +48,7 @@ class Canvas extends React.Component {
         ///////////// Test block in gamePlace ///////////////
         /////////////////////////////////////////////////////
 
-        this.gamePlace[8][4] = { // currently, this is the initial object
+        this.gamePlace[8][4] = { // currently, this is the initial object - it is a little hackie
             x: 0,
             y: 0,
             color: 'green'
@@ -81,7 +81,7 @@ class Canvas extends React.Component {
 
     blockControll = (event) => {
         event.preventDefault();
-        console.log(event.keyCode);
+        // console.log(event.keyCode);
 
         switch(event.keyCode) {
             case 37:
