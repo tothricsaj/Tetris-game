@@ -42,9 +42,6 @@ export class Block {
             // this.y3 += downValue;
             // this.y4 += downValue;
         }
-
-
-        // window.requestAnimationFrame(this.moveDown);
     }
 
     moveRight() {
@@ -64,6 +61,16 @@ export class Block {
             // this.x2 -= leftValue;
             // this.x3 -= leftValue;
             // this.x4 -= leftValue;
+        }
+    }
+
+    copyParams() {
+        return {
+            x1: this.x1, y1: this.y1,
+            x2: this.x2, y2: this.y2,
+            x3: this.x3, y3: this.y3,
+            x4: this.x4, y4: this.y4,
+            color: this.color
         }
     }
 }
@@ -97,7 +104,10 @@ export class TBlock extends Block {
 
         this.color = 'rgb(30, 140, 180)';
 
-        console.log('TBlock was made by builder');
+        this.bottomEdge = {
+            x: this.x4,
+            y: this.y4
+        }
     }
 }
 
@@ -117,7 +127,10 @@ export class SBlock extends Block {
 
         this.color = 'rgb(230, 100, 80)'
 
-        console.log('SBlock was made by builder');
+        this.bottomEdge = {
+            x: this.x4,
+            y: this.y4
+        }
     }
 }
 
@@ -135,6 +148,12 @@ export class ZBlock extends Block {
         this.y4 = 10;
 
         this.color = 'rgb(200, 160, 90)';
+
+        this.bottomEdge = {
+            x: this.x4,
+            y: this.y4
+        }
+
     }
 }
 
@@ -153,6 +172,12 @@ export class OBlock extends Block {
         this.y4 = 10;
 
         this.color = 'rgb(230, 140, 180)';
+
+        this.bottomEdge = {
+            x: this.x4,
+            y: this.y4
+        }
+
     }
 }
 
@@ -171,5 +196,10 @@ export class IBlock extends Block {
         this.y4 = 30;
 
         this.color = 'rgb(140, 180, 100)';
+
+        this.bottomEdge = {
+            x: this.x4,
+            y: this.y4
+        }
     }
 }

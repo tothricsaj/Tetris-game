@@ -68,6 +68,10 @@ class Canvas extends React.Component {
 
         /////////////////////////////////////////////////////
 
+        // I guess that a more subtle way exists.....
+        this.gamePlace = [];
+        for(let i=0; i<200; i++) this.gamePlace.push(new Array(300).fill(null));
+
         this.state = {
             block: this._bb.block(this.blockType),
             stopFlow: false, // this is due to the test
@@ -105,6 +109,7 @@ class Canvas extends React.Component {
         const ctx = canvas.getContext('2d');
         const width = canvas.width;
         const height = canvas.height;
+        const currBlock = this.state.block;
 
         let collosion = false;
 
@@ -150,6 +155,7 @@ class Canvas extends React.Component {
         });
 
         // console.log(this.state.block.getYDimensions()[0]);
+      
         if(this.state.block.getYDimensions()[0] >= 8 || collosion) {
             // let blockTypes = [
             //     'Itype',
@@ -166,6 +172,18 @@ class Canvas extends React.Component {
                 'Testtype',
                 'Testtype'
             ];
+
+            let xDim = currBlock.getXDimensions();
+            let yDim = currBlock.getYDimensions();
+
+            xDim.forEach((dimX, i) => {
+                this.gamePlace[dimX][yDim[i]] = {
+                    x: dimX,
+                    y: yDim[i],
+                    color: currBlock.color
+                };
+            });
+
             this.setState({
                 ...this.state,
                 block: this._bb.block(blockTypes[Math.floor(Math.random() * blockTypes.length)])
@@ -211,6 +229,11 @@ class Canvas extends React.Component {
             this.state.block.moveDown(90);
             this._moveToBottom = 0;
         }
+
+        // ctx.fillStyle = this.gamePlace[]
+        // ctx.fillRect(block.x1, block.y1, block.width, block.height);
+        //
+        
         
         ctx.restore();
 
