@@ -191,13 +191,6 @@ class Canvas extends React.Component {
                 if(!!obj) {
                     ctx.fillStyle = obj.color;
                     ctx.fillRect((obj.x * 10), (obj.y * 10), 10, 10);
-                    //
-                    // TODO: it is a good idea
-                    // this._bb.builder(obj, ctx);
-
-                    // if(this.state.stopFlow) console.table(obj);
-
-                    // console.log('drawing')
                 }
             });
         });
@@ -240,8 +233,9 @@ class Canvas extends React.Component {
                 {/* 
                     this button is just because of testing 
                     After the develop you should delete it!!!!!!
+
+                    <button onClick={this.freezeTheState}>Stop</button>
                 */}
-                <button onClick={this.freezeTheState}>Stop</button>
                 { this.state.gameOver ?  (
                        <div>Game Over</div>
                 ):
