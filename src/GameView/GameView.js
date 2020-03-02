@@ -68,10 +68,6 @@ class Canvas extends React.Component {
 
         /////////////////////////////////////////////////////
 
-        // I guess that a more subtle way exists.....
-        this.gamePlace = [];
-        for(let i=0; i<200; i++) this.gamePlace.push(new Array(300).fill(null));
-
         this.state = {
             block: this._bb.block(this.blockType),
             stopFlow: false, // this is due to the test
@@ -127,12 +123,6 @@ class Canvas extends React.Component {
                     if(matchDim || this.state.block.getYDimensions()[0] >= 8) {
                         collosion = true;
 
-                        // console.table({
-                        //     rowIndex: rowIndex,
-                        //     index: i,
-                        //     currentBlockX: this.state.block.getXDimensions()[0]
-                        // })
-
                         if(this.gamePlace[rowIndex - 1]===undefined) console.table({x1: this.state.block.x1, y: this.state.block.y1 });
                         try {
                             this.gamePlace[rowIndex - 1][this.state.block.getXDimensions()[0]] = {
@@ -174,17 +164,6 @@ class Canvas extends React.Component {
                 'Testtype',
                 'Testtype'
             ];
-
-            let xDim = currBlock.getXDimensions();
-            let yDim = currBlock.getYDimensions();
-
-            xDim.forEach((dimX, i) => {
-                this.gamePlace[dimX][yDim[i]] = {
-                    x: dimX,
-                    y: yDim[i],
-                    color: currBlock.color
-                };
-            });
 
             this.setState({
                 ...this.state,
@@ -251,6 +230,7 @@ class Canvas extends React.Component {
             ...this.state,
             stopFlow: !this.state.stopFlow
         })
+        console.log('what??')
         console.table(this.gamePlace)
     }
 
