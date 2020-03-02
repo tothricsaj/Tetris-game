@@ -4,7 +4,10 @@ import { BlockBuilder } from '../services/BlockBuilder.js';
 class GameView extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { connect: true };
+      this.state = { 
+          connect: true,
+          gameOver: false
+      };
     this.updateAnimationState = this.updateAnimationState.bind(this);
   }
   
@@ -17,15 +20,29 @@ class GameView extends React.Component {
   }
   
   updateAnimationState(elapsedTime) {
-      setTimeout(() => {
-        this.setState({connect: true}); // I draw a blank about this....explore!
-        this.rAF = requestAnimationFrame(this.updateAnimationState);
-      }, 100);
-      
+      try {
+        setTimeout(() => {
+            this.setState({connect: true}); // I draw a blank about this....explore!
+            this.rAF = requestAnimationFrame(this.updateAnimationState);
+        }, 100);
+      } catch(e) {
+            console.log('what the bloody horse lungs?')
+            console.log(e);
+            cancelAnimationFrame(this.rAF);
+            this.setState({...this.state, gameOver: true});
+      }
    }
   
   render() {
-    return <Canvas />
+      return (
+          <div>
+            {this.state.gameOver ? (
+                <div>GameOver</div>
+              ):(
+                <Canvas />
+              )}
+          </div>
+        )
   }
 }
 
@@ -106,6 +123,12 @@ class Canvas extends React.Component {
                         obj.x === this.state.block.getXDimensions()[0] &&
                         obj.y === this.state.block.getYDimensions()[0] + 1
                     );
+
+                    if (matchDim && obj.y === 1) {
+                        this.state.gameOver = true
+                        return;
+                    }
+
                     // console.table(this.gamePlace[rowIndex][i])
                     // console.table(this.state.block)
                     if(matchDim || this.state.block.getYDimensions()[0] >= 8) {
@@ -118,8 +141,8 @@ class Canvas extends React.Component {
                                 color: this.state.block.color
                             }
                         } catch(e) {
-                            console.table(this.gamePlace);
-                            console.table({x1: this.state.block.x1, y1: this.state.block.y1 });
+                            // console.table(this.gamePlace);
+                            // console.table({x1: this.state.block.x1, y1: this.state.block.y1 });
                         }
 
                         return true;
@@ -222,7 +245,7 @@ class Canvas extends React.Component {
                 { this.state.gameOver ?  (
                        <div>Game Over</div>
                 ):
-                        <p>Yheaaa</p>
+                        null
                 }
             </div>
         )
