@@ -35,31 +35,32 @@ export class Block {
         ];
     }
 
-    moveDown(downValue, edge) {
-        if ((this.y1 + downValue) <= edge) {
-            this.y1 += downValue;
-            this.y2 += downValue;
-            this.y3 += downValue;
-            this.y4 += downValue;
+    moveDown(edge) {
+        if (this.y1 <= edge) {
+            this.y1 += 1;
+            // this.y2 += downValue;
+            // this.y3 += downValue;
+            // this.y4 += downValue;
         }
     }
 
-    moveRight(rightValue, edge) {
+    moveRight() {
         // TODO: find a common solution for every block type
-        if((this.x3 + 10 + rightValue) <= edge) {
-            this.x1 += rightValue;
-            this.x2 += rightValue;
-            this.x3 += rightValue;
-            this.x4 += rightValue;
+        console.log(this.x1)
+        if(this.x1 <= 5) {
+            this.x1 += 1;
+            // this.x2 += rightValue;
+            // this.x3 += rightValue;
+            // this.x4 += rightValue;
         }
     }
 
-    moveLeft(leftValue) {
-        if ((this.x1 - leftValue) >= 0) {
-            this.x1 -= leftValue;
-            this.x2 -= leftValue;
-            this.x3 -= leftValue;
-            this.x4 -= leftValue;
+    moveLeft() {
+        if (this.x1 >= 1) {
+            this.x1 -= 1;
+            // this.x2 -= leftValue;
+            // this.x3 -= leftValue;
+            // this.x4 -= leftValue;
         }
     }
 
@@ -71,6 +72,19 @@ export class Block {
             x4: this.x4, y4: this.y4,
             color: this.color
         }
+    }
+}
+
+export class TestBlock extends Block {
+    constructor() {
+        super();
+
+        this.x1 = 3;
+
+        this.y1 = 0;
+
+        let colors = ['orange', 'yellow', 'lightblue', 'grey'];
+        this.color = colors[Math.floor(Math.random()*colors.length)];
     }
 }
 
