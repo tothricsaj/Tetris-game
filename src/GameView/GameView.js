@@ -151,7 +151,7 @@ class Canvas extends React.Component {
             });
         });
 
-        if(this.state.block.getYDimensions()[0] >= 8 || collosion) {
+        if((this.state.block.getYDimensions()[0] >= 8 || collosion) && !this.state.gameOver) {
             // let blockTypes = [
             //     'Itype',
             //     'Otype',
@@ -208,7 +208,7 @@ class Canvas extends React.Component {
 
         // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-        if (this._moveToBottom === 80) {
+        if (this._moveToBottom === 80 && !this.state.gameOver) {
             // Here the controll the speed of the block's moving
             this.state.block.moveDown(90);
             this._moveToBottom = 0;
