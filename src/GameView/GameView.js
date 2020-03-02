@@ -159,6 +159,8 @@ class Canvas extends React.Component {
             //     'Ttype'
             // ];
 
+            // Commit to solve git problem
+
             let blockTypes = [
                 'Testtype',
                 'Testtype',
