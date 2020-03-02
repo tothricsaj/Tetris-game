@@ -54,23 +54,12 @@ class Canvas extends React.Component {
             color: 'green'
         };
 
-        // this.gamePlace[88][24] = {
-        //     x: 25,
-        //     y: 70,
-        //     color: 'red'
-        // };
-
-        // this.gamePlace[89][23] = {
-        //     x: 15,
-        //     y: 80,
-        //     color: 'lightgreen'
-        // };
-
         /////////////////////////////////////////////////////
 
         this.state = {
             block: this._bb.block(this.blockType),
             stopFlow: false, // this is due to the test
+            gameOver: false,
         };
 
         this._moveToBottom = 0; // this is contorll the speed of block's moving
@@ -105,7 +94,6 @@ class Canvas extends React.Component {
         const ctx = canvas.getContext('2d');
         const width = canvas.width;
         const height = canvas.height;
-        const currBlock = this.state.block;
 
         let collosion = false;
 
@@ -123,7 +111,6 @@ class Canvas extends React.Component {
                     if(matchDim || this.state.block.getYDimensions()[0] >= 8) {
                         collosion = true;
 
-                        if(this.gamePlace[rowIndex - 1]===undefined) console.table({x1: this.state.block.x1, y: this.state.block.y1 });
                         try {
                             this.gamePlace[rowIndex - 1][this.state.block.getXDimensions()[0]] = {
                                 x: this.state.block.getXDimensions()[0],
@@ -134,9 +121,6 @@ class Canvas extends React.Component {
                             console.table(this.gamePlace);
                             console.table({x1: this.state.block.x1, y1: this.state.block.y1 });
                         }
-                        
-
-                        // console.table(this.gamePlace[rowIndex - 1][this.state.block.getXDimensions()[0]])
 
                         return true;
                     }
@@ -144,8 +128,6 @@ class Canvas extends React.Component {
             });
         });
 
-        // console.log(this.state.block.getYDimensions()[0]);
-      
         if(this.state.block.getYDimensions()[0] >= 8 || collosion) {
             // let blockTypes = [
             //     'Itype',
@@ -154,8 +136,6 @@ class Canvas extends React.Component {
             //     'Stype',
             //     'Ttype'
             // ];
-
-            // Commit to solve git problem
 
             let blockTypes = [
                 'Testtype',
@@ -211,11 +191,6 @@ class Canvas extends React.Component {
             this._moveToBottom = 0;
         }
 
-        // ctx.fillStyle = this.gamePlace[]
-        // ctx.fillRect(block.x1, block.y1, block.width, block.height);
-        //
-        
-        
         ctx.restore();
 
         this._moveToBottom += 8; // bigger number, faster move
@@ -244,6 +219,11 @@ class Canvas extends React.Component {
                     After the develop you should delete it!!!!!!
                 */}
                 <button onClick={this.freezeTheState}>Stop</button>
+                { this.state.gameOver ?  (
+                       <div>Game Over</div>
+                ):
+                        <p>Yheaaa</p>
+                }
             </div>
         )
     }
