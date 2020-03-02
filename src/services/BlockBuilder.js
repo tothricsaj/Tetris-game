@@ -1,4 +1,4 @@
-import { TBlock, SBlock, ZBlock, OBlock, IBlock } from './Blocks.js';
+import { TBlock, SBlock, ZBlock, OBlock, IBlock, TestBlock } from './Blocks.js';
 
 export class BlockBuilder {
     constructor() {
@@ -8,10 +8,16 @@ export class BlockBuilder {
 
     builder(block, ctx) {
         ctx.fillStyle = block.color;
-        ctx.fillRect(block.x1, block.y1, block.width, block.height);
-        ctx.fillRect(block.x2, block.y2, block.width, block.height);
-        ctx.fillRect(block.x3, block.y3, block.width, block.height);
-        ctx.fillRect(block.x4, block.y4, block.width, block.height);
+        ctx.fillRect((block.x1 * 10), (block.y1 * 10), block.width, block.height);
+        
+        ///////////////////////////////////////////////////////////////
+        //            ATTENTION!!!!!!!!!!!!!!!!!!!!!!!!!!!!           /
+        // After test, you ought to uncomment the following rows!!!!! /
+        ///////////////////////////////////////////////////////////////
+       
+        // ctx.fillRect(block.x2, block.y2, block.width, block.height);
+        // ctx.fillRect(block.x3, block.y3, block.width, block.height);
+        // ctx.fillRect(block.x4, block.y4, block.width, block.height);
     }
 
     block(type) {
@@ -28,7 +34,7 @@ export class BlockBuilder {
                 blockType = 'Stype';
                 return new SBlock();
 
-        case 'Ztype':
+            case 'Ztype':
                 
                 blockType = 'Ztype';
                 return new ZBlock();
@@ -42,6 +48,12 @@ export class BlockBuilder {
                 
                 blockType = 'Itype';
                 return new IBlock();
+
+            case 'Testtype':
+                
+                blockType = 'TestType';
+                return new TestBlock();
+
 
             default:
                 return 'No set type'
