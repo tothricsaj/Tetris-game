@@ -4,7 +4,10 @@ import { BlockBuilder } from '../services/BlockBuilder.js';
 class GameView extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { connect: true };
+      this.state = { 
+          connect: true,
+          gameOver: false
+      };
     this.updateAnimationState = this.updateAnimationState.bind(this);
   }
   
@@ -17,15 +20,29 @@ class GameView extends React.Component {
   }
   
   updateAnimationState(elapsedTime) {
-      setTimeout(() => {
-        this.setState({connect: true}); // I draw a blank about this....explore!
-        this.rAF = requestAnimationFrame(this.updateAnimationState);
-      }, 100);
-      
+      try {
+        setTimeout(() => {
+            this.setState({connect: true}); // I draw a blank about this....explore!
+            this.rAF = requestAnimationFrame(this.updateAnimationState);
+        }, 100);
+      } catch(e) {
+            console.log('what the bloody horse lungs?')
+            console.log(e);
+            cancelAnimationFrame(this.rAF);
+            this.setState({...this.state, gameOver: true});
+      }
    }
   
   render() {
-    return <Canvas />
+      return (
+          <div>
+            {this.state.gameOver ? (
+                <div>GameOver</div>
+              ):(
+                <Canvas />
+              )}
+          </div>
+        )
   }
 }
 
@@ -54,23 +71,12 @@ class Canvas extends React.Component {
             color: 'green'
         };
 
-        // this.gamePlace[88][24] = {
-        //     x: 25,
-        //     y: 70,
-        //     color: 'red'
-        // };
-
-        // this.gamePlace[89][23] = {
-        //     x: 15,
-        //     y: 80,
-        //     color: 'lightgreen'
-        // };
-
         /////////////////////////////////////////////////////
 
         this.state = {
             block: this._bb.block(this.blockType),
             stopFlow: false, // this is due to the test
+            gameOver: false,
         };
 
         this._moveToBottom = 0; // this is contorll the speed of block's moving
@@ -105,7 +111,6 @@ class Canvas extends React.Component {
         const ctx = canvas.getContext('2d');
         const width = canvas.width;
         const height = canvas.height;
-        const currBlock = this.state.block;
 
         let collosion = false;
 
@@ -118,12 +123,17 @@ class Canvas extends React.Component {
                         obj.x === this.state.block.getXDimensions()[0] &&
                         obj.y === this.state.block.getYDimensions()[0] + 1
                     );
+
+                    if (matchDim && obj.y === 1) {
+                        this.state.gameOver = true
+                        return;
+                    }
+
                     // console.table(this.gamePlace[rowIndex][i])
                     // console.table(this.state.block)
                     if(matchDim || this.state.block.getYDimensions()[0] >= 8) {
                         collosion = true;
 
-                        if(this.gamePlace[rowIndex - 1]===undefined) console.table({x1: this.state.block.x1, y: this.state.block.y1 });
                         try {
                             this.gamePlace[rowIndex - 1][this.state.block.getXDimensions()[0]] = {
                                 x: this.state.block.getXDimensions()[0],
@@ -131,12 +141,9 @@ class Canvas extends React.Component {
                                 color: this.state.block.color
                             }
                         } catch(e) {
-                            console.table(this.gamePlace);
-                            console.table({x1: this.state.block.x1, y1: this.state.block.y1 });
+                            // console.table(this.gamePlace);
+                            // console.table({x1: this.state.block.x1, y1: this.state.block.y1 });
                         }
-                        
-
-                        // console.table(this.gamePlace[rowIndex - 1][this.state.block.getXDimensions()[0]])
 
                         return true;
                     }
@@ -144,9 +151,7 @@ class Canvas extends React.Component {
             });
         });
 
-        // console.log(this.state.block.getYDimensions()[0]);
-      
-        if(this.state.block.getYDimensions()[0] >= 8 || collosion) {
+        if((this.state.block.getYDimensions()[0] >= 8 || collosion) && !this.state.gameOver) {
             // let blockTypes = [
             //     'Itype',
             //     'Otype',
@@ -154,8 +159,6 @@ class Canvas extends React.Component {
             //     'Stype',
             //     'Ttype'
             // ];
-
-            // Commit to solve git problem
 
             let blockTypes = [
                 'Testtype',
@@ -188,13 +191,6 @@ class Canvas extends React.Component {
                 if(!!obj) {
                     ctx.fillStyle = obj.color;
                     ctx.fillRect((obj.x * 10), (obj.y * 10), 10, 10);
-                    //
-                    // TODO: it is a good idea
-                    // this._bb.builder(obj, ctx);
-
-                    // if(this.state.stopFlow) console.table(obj);
-
-                    // console.log('drawing')
                 }
             });
         });
@@ -205,17 +201,12 @@ class Canvas extends React.Component {
 
         // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-        if (this._moveToBottom === 80) {
+        if (this._moveToBottom === 80 && !this.state.gameOver) {
             // Here the controll the speed of the block's moving
             this.state.block.moveDown(90);
             this._moveToBottom = 0;
         }
 
-        // ctx.fillStyle = this.gamePlace[]
-        // ctx.fillRect(block.x1, block.y1, block.width, block.height);
-        //
-        
-        
         ctx.restore();
 
         this._moveToBottom += 8; // bigger number, faster move
@@ -242,8 +233,14 @@ class Canvas extends React.Component {
                 {/* 
                     this button is just because of testing 
                     After the develop you should delete it!!!!!!
+
+                    <button onClick={this.freezeTheState}>Stop</button>
                 */}
-                <button onClick={this.freezeTheState}>Stop</button>
+                { this.state.gameOver ?  (
+                       <div>Game Over</div>
+                ):
+                        null
+                }
             </div>
         )
     }
