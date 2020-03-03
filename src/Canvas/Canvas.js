@@ -42,25 +42,6 @@ class Canvas extends React.Component {
         this.freezeTheState = this.freezeTheState.bind(this);
     }
 
-    blockControll = (event) => {
-        event.preventDefault();
-        // console.log(event.keyCode);
-
-        switch(event.keyCode) {
-            case 37:
-                this.state.block.moveLeft(10);
-                return;
-            case 39:
-                this.state.block.moveRight(10, 60);
-                return;
-            case 40:
-                this.state.block.moveDown(10, 70);
-                return;
-            default:
-                return;
-        }
-    };
-
 
     componentDidUpdate() {
 
@@ -170,6 +151,25 @@ class Canvas extends React.Component {
 
         // document.removeEventListener('keydown', blockControll);
     }
+
+    blockControll = (event) => {
+        event.preventDefault();
+        // console.log(event.keyCode);
+
+        switch(event.keyCode) {
+            case 37:
+                this.state.block.moveLeft(10);
+                return;
+            case 39:
+                this.state.block.moveRight(10, 60);
+                return;
+            case 40:
+                this.state.block.moveDown(10, 70);
+                return;
+            default:
+                return;
+        }
+    };
 
     freezeTheState() {
         // this functon is owing to test. Here will console
