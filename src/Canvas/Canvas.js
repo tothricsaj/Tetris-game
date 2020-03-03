@@ -151,6 +151,12 @@ class Canvas extends React.Component {
 
                     if (matchDim && obj.y === 1) {
                         this.state.gameOver = true
+                        // TODO: this is not funky, I do know nonetheless I can't solve in other way.
+                        // Yes, I must learn more about this effect.
+                        ////////////////////////////////////////////////////
+                        // this.setState({...this.state, gameOver: true}) //
+                        ////////////////////////////////////////////////////
+
                         return;
                     }
 
