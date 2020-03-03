@@ -6,6 +6,8 @@ class Canvas extends React.Component {
     constructor(props) {
         super(props);
 
+        // TODO:
+        // Well, is it the best way? Search some solution
         document.addEventListener('keydown', this.blockControll);
         
         this._bb = new BlockBuilder();
@@ -17,13 +19,13 @@ class Canvas extends React.Component {
         for(let i=0; i<9; i++) this.gamePlace.push(new Array(7).fill(null));
 
         /////////////////////////////////////////////////////
-        ///////////// Test block in gamePlace ///////////////
+        ///////////// Initial block in gamePlace ////////////
         /////////////////////////////////////////////////////
 
         this.gamePlace[8][4] = { // currently, this is the initial object - it is a little hackie
             x: 0,
             y: 0,
-            color: 'green'
+            color: '#282c34' // cheating
         };
 
         /////////////////////////////////////////////////////
@@ -36,28 +38,10 @@ class Canvas extends React.Component {
 
         this._moveToBottom = 0; // this is contorll the speed of block's moving
 
-        this.blockControll = this.blockControll.bind(this);
-        this.freezeTheState = this.freezeTheState.bind(this);
+        this.blockControll = this.blockControll.bind(this)
+        this.freezeTheState = this.freezeTheState.bind(this)
+        this.checkCollosion = this.checkCollosion.bind(this)
     }
-
-    blockControll = (event) => {
-        event.preventDefault();
-        // console.log(event.keyCode);
-
-        switch(event.keyCode) {
-            case 37:
-                this.state.block.moveLeft(10);
-                return;
-            case 39:
-                this.state.block.moveRight(10, 60);
-                return;
-            case 40:
-                this.state.block.moveDown(10, 70);
-                return;
-            default:
-                return;
-        }
-    };
 
 
     componentDidUpdate() {
@@ -67,46 +51,12 @@ class Canvas extends React.Component {
         const width = canvas.width;
         const height = canvas.height;
 
-        let collosion = false;
+        // let collosion = false;
+        this.collosion = false;
 
-        this.gamePlace.forEach((row, i) => {
-            let rowIndex = i;
-            row.forEach((obj, i )=> {
-                if(!!obj) {
-                    let matchDim = (
-                        // TODO it may change when the comples bolcks will come
-                        obj.x === this.state.block.getXDimensions()[0] &&
-                        obj.y === this.state.block.getYDimensions()[0] + 1
-                    );
+        this.checkCollosion();
 
-                    if (matchDim && obj.y === 1) {
-                        this.state.gameOver = true
-                        return;
-                    }
-
-                    // console.table(this.gamePlace[rowIndex][i])
-                    // console.table(this.state.block)
-                    if(matchDim || this.state.block.getYDimensions()[0] >= 8) {
-                        collosion = true;
-
-                        try {
-                            this.gamePlace[rowIndex - 1][this.state.block.getXDimensions()[0]] = {
-                                x: this.state.block.getXDimensions()[0],
-                                y: this.state.block.getYDimensions()[0],
-                                color: this.state.block.color
-                            }
-                        } catch(e) {
-                            // console.table(this.gamePlace);
-                            // console.table({x1: this.state.block.x1, y1: this.state.block.y1 });
-                        }
-
-                        return true;
-                    }
-                }
-            });
-        });
-
-        if((this.state.block.getYDimensions()[0] >= 8 || collosion) && !this.state.gameOver) {
+        if((this.state.block.getYDimensions()[0] >= 8 || this.collosion) && !this.state.gameOver) {
             // let blockTypes = [
             //     'Itype',
             //     'Otype',
@@ -167,6 +117,70 @@ class Canvas extends React.Component {
         this._moveToBottom += 8; // bigger number, faster move
 
         // document.removeEventListener('keydown', blockControll);
+    }
+
+    blockControll = (event) => {
+        event.preventDefault();
+        // console.log(event.keyCode);
+
+        switch(event.keyCode) {
+            case 37:
+                this.state.block.moveLeft(10);
+                return;
+            case 39:
+                this.state.block.moveRight(10, 60);
+                return;
+            case 40:
+                this.state.block.moveDown(10, 70);
+                return;
+            default:
+                return;
+        }
+    };
+
+    checkCollosion() {
+        this.gamePlace.forEach((row, i) => {
+            let rowIndex = i;
+            row.forEach((obj, i )=> {
+                if(!!obj) {
+                    let matchDim = (
+                        // TODO it may change when the comples bolcks will come
+                        obj.x === this.state.block.getXDimensions()[0] &&
+                        obj.y === this.state.block.getYDimensions()[0] + 1
+                    );
+
+                    if (matchDim && obj.y === 1) {
+                        this.state.gameOver = true
+                        // TODO: this is not funky, I do know nonetheless I can't solve in other way.
+                        // Yes, I must learn more about this effect.
+                        ////////////////////////////////////////////////////
+                        // this.setState({...this.state, gameOver: true}) //
+                        ////////////////////////////////////////////////////
+
+                        return;
+                    }
+
+                    // console.table(this.gamePlace[rowIndex][i])
+                    // console.table(this.state.block)
+                    if(matchDim || this.state.block.getYDimensions()[0] >= 8) {
+                        this.collosion = true;
+
+                        try {
+                            this.gamePlace[rowIndex - 1][this.state.block.getXDimensions()[0]] = {
+                                x: this.state.block.getXDimensions()[0],
+                                y: this.state.block.getYDimensions()[0],
+                                color: this.state.block.color
+                            }
+                        } catch(e) {
+                            // console.table(this.gamePlace);
+                            // console.table({x1: this.state.block.x1, y1: this.state.block.y1 });
+                        }
+
+                        return true;
+                    }
+                }
+            });
+        });
     }
 
     freezeTheState() {
