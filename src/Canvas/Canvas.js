@@ -38,8 +38,9 @@ class Canvas extends React.Component {
 
         this._moveToBottom = 0; // this is contorll the speed of block's moving
 
-        this.blockControll = this.blockControll.bind(this);
-        this.freezeTheState = this.freezeTheState.bind(this);
+        this.blockControll = this.blockControll.bind(this)
+        this.freezeTheState = this.freezeTheState.bind(this)
+        this.checkCollosion = this.checkCollosion.bind(this)
     }
 
 
@@ -50,46 +51,12 @@ class Canvas extends React.Component {
         const width = canvas.width;
         const height = canvas.height;
 
-        let collosion = false;
+        // let collosion = false;
+        this.collosion = false;
 
-        this.gamePlace.forEach((row, i) => {
-            let rowIndex = i;
-            row.forEach((obj, i )=> {
-                if(!!obj) {
-                    let matchDim = (
-                        // TODO it may change when the comples bolcks will come
-                        obj.x === this.state.block.getXDimensions()[0] &&
-                        obj.y === this.state.block.getYDimensions()[0] + 1
-                    );
+        this.checkCollosion();
 
-                    if (matchDim && obj.y === 1) {
-                        this.state.gameOver = true
-                        return;
-                    }
-
-                    // console.table(this.gamePlace[rowIndex][i])
-                    // console.table(this.state.block)
-                    if(matchDim || this.state.block.getYDimensions()[0] >= 8) {
-                        collosion = true;
-
-                        try {
-                            this.gamePlace[rowIndex - 1][this.state.block.getXDimensions()[0]] = {
-                                x: this.state.block.getXDimensions()[0],
-                                y: this.state.block.getYDimensions()[0],
-                                color: this.state.block.color
-                            }
-                        } catch(e) {
-                            // console.table(this.gamePlace);
-                            // console.table({x1: this.state.block.x1, y1: this.state.block.y1 });
-                        }
-
-                        return true;
-                    }
-                }
-            });
-        });
-
-        if((this.state.block.getYDimensions()[0] >= 8 || collosion) && !this.state.gameOver) {
+        if((this.state.block.getYDimensions()[0] >= 8 || this.collosion) && !this.state.gameOver) {
             // let blockTypes = [
             //     'Itype',
             //     'Otype',
@@ -170,6 +137,45 @@ class Canvas extends React.Component {
                 return;
         }
     };
+
+    checkCollosion() {
+        this.gamePlace.forEach((row, i) => {
+            let rowIndex = i;
+            row.forEach((obj, i )=> {
+                if(!!obj) {
+                    let matchDim = (
+                        // TODO it may change when the comples bolcks will come
+                        obj.x === this.state.block.getXDimensions()[0] &&
+                        obj.y === this.state.block.getYDimensions()[0] + 1
+                    );
+
+                    if (matchDim && obj.y === 1) {
+                        this.state.gameOver = true
+                        return;
+                    }
+
+                    // console.table(this.gamePlace[rowIndex][i])
+                    // console.table(this.state.block)
+                    if(matchDim || this.state.block.getYDimensions()[0] >= 8) {
+                        this.collosion = true;
+
+                        try {
+                            this.gamePlace[rowIndex - 1][this.state.block.getXDimensions()[0]] = {
+                                x: this.state.block.getXDimensions()[0],
+                                y: this.state.block.getYDimensions()[0],
+                                color: this.state.block.color
+                            }
+                        } catch(e) {
+                            // console.table(this.gamePlace);
+                            // console.table({x1: this.state.block.x1, y1: this.state.block.y1 });
+                        }
+
+                        return true;
+                    }
+                }
+            });
+        });
+    }
 
     freezeTheState() {
         // this functon is owing to test. Here will console
