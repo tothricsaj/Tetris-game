@@ -6,6 +6,8 @@ class Canvas extends React.Component {
     constructor(props) {
         super(props);
 
+        // TODO:
+        // Well, is it the best way? Search some solution
         document.addEventListener('keydown', this.blockControll);
         
         this._bb = new BlockBuilder();
@@ -17,13 +19,13 @@ class Canvas extends React.Component {
         for(let i=0; i<9; i++) this.gamePlace.push(new Array(7).fill(null));
 
         /////////////////////////////////////////////////////
-        ///////////// Test block in gamePlace ///////////////
+        ///////////// Initial block in gamePlace ////////////
         /////////////////////////////////////////////////////
 
         this.gamePlace[8][4] = { // currently, this is the initial object - it is a little hackie
             x: 0,
             y: 0,
-            color: 'green'
+            color: '#282c34' // cheating
         };
 
         /////////////////////////////////////////////////////
