@@ -17,3 +17,4 @@ export default App;
 // I is fairly hard alone...
 // So, this is ownig to gitflow
 // block controll is working nonetheless I have begun to develop the gameplace
+// OK, gameover if the block on the top
