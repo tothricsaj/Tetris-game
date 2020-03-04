@@ -1,5 +1,5 @@
 import React from 'react';
-import style from './GameOver.style.scss';
+import './GameOver.style.css';
 
 class GameOver extends React.Component {
     constructor() {
@@ -8,7 +8,7 @@ class GameOver extends React.Component {
 
     render() {
         return (
-            <div className={style.wrapper}>
+            <div className="wrapper">
                 <h2>Game over</h2>
             </div>
         )

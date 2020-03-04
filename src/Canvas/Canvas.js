@@ -207,12 +207,12 @@ class Canvas extends React.Component {
                     <button onClick={this.freezeTheState}>Stop</button>
                 */}
                 { this.state.gameOver ?  (
-                       <div>Game Over</div>
+                        <GameOver />
                 ):
                         null
                 }
 
-                <GameOver />
+                
             </div>
         )
     }
