@@ -6,7 +6,6 @@ class GameView extends React.Component {
     super(props);
       this.state = { 
           connect: true,
-          gameOver: false
       };
     this.updateAnimationState = this.updateAnimationState.bind(this);
   }
@@ -34,15 +33,7 @@ class GameView extends React.Component {
    }
   
   render() {
-      return (
-          <div>
-            {this.state.gameOver ? (
-                <div>GameOver</div>
-              ):(
-                <Canvas />
-              )}
-          </div>
-        )
+      return <Canvas />
   }
 }
 
