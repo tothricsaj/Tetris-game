@@ -1,5 +1,6 @@
 import React from 'react';
 import { BlockBuilder } from '../services/BlockBuilder.js';
+import GameOver from '../GameOver/GameOver.js';
 
 class Canvas extends React.Component {
 
@@ -210,6 +211,8 @@ class Canvas extends React.Component {
                 ):
                         null
                 }
+
+                <GameOver />
             </div>
         )
     }
