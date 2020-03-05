@@ -101,6 +101,16 @@ class Canvas extends React.Component {
             });
         });
 
+        ///////////////////////
+        // CHECK BOOM SECTON //
+        ///////////////////////
+
+        this.gamePlace.forEach((row, i) => {
+
+            // if(row.every(val => !!val)) console.log('BOOOOOOOOOOOOOOOMMMMMMMMMMMMMMMM')
+        });
+
+
         // reference block due to test
         // ctx.fillStyle = 'pink';
         // ctx.fillRect(35, 80, 10, 10);
