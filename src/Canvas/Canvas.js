@@ -85,6 +85,20 @@ class Canvas extends React.Component {
         ctx.save();
 
         ctx.clearRect(0, 0, width, height);
+
+        ///////////////////////
+        // CHECK BOOM SECTON //
+        ///////////////////////
+
+        this.gamePlace.forEach((row, i) => {
+
+            if(row.every(val => !!val)) {
+                // console.table(this.gamePlace)
+                this.gamePlace[i] = new Array(7).fill(null)
+                // console.table(this.gamePlace)
+            }
+        });
+
         
         // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         // DRAWING SECTION
@@ -103,18 +117,7 @@ class Canvas extends React.Component {
             });
         });
 
-        ///////////////////////
-        // CHECK BOOM SECTON //
-        ///////////////////////
-
-        this.gamePlace.forEach((row, i) => {
-
-            if(row.every(val => !!val)) {
-                this.gamePlace[i] = new Array(7).fill(null)
-                // console.table(this.gamePlace[i])
-            }
-        });
-
+        
 
         // reference block due to test
         // ctx.fillStyle = 'pink';
