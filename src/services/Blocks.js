@@ -46,7 +46,6 @@ export class Block {
 
     moveRight() {
         // TODO: find a common solution for every block type
-        console.log(this.x1)
         if(this.x1 <= 5) {
             this.x1 += 1;
             // this.x2 += rightValue;

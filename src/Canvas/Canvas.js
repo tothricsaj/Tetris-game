@@ -29,6 +29,8 @@ class Canvas extends React.Component {
             color: '#282c34' // cheating
         };
 
+        console.table(this.gamePlace[8])
+
         /////////////////////////////////////////////////////
 
         this.state = {
@@ -107,7 +109,10 @@ class Canvas extends React.Component {
 
         this.gamePlace.forEach((row, i) => {
 
-            // if(row.every(val => !!val)) console.log('BOOOOOOOOOOOOOOOMMMMMMMMMMMMMMMM')
+            if(row.every(val => !!val)) {
+                this.gamePlace[i] = new Array(7).fill(null)
+                // console.table(this.gamePlace[i])
+            }
         });
 
 
