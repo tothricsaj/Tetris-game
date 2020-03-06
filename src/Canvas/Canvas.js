@@ -93,9 +93,8 @@ class Canvas extends React.Component {
         this.gamePlace.forEach((row, i) => {
 
             if(row.every(val => !!val)) {
-                // console.table(this.gamePlace)
                 this.gamePlace[i] = new Array(7).fill(null)
-                // console.table(this.gamePlace)
+                console.log('BoooooOOOOOOOOOOoooooooMMMMMMMMMMMM')
             }
         });
 
@@ -159,7 +158,6 @@ class Canvas extends React.Component {
 
     checkCollosion() {
         this.gamePlace.forEach((row, i) => {
-            let rowIndex = i;
             row.forEach((obj, i )=> {
                 if(!!obj) {
                     let matchDim = (
@@ -185,7 +183,7 @@ class Canvas extends React.Component {
                         this.collosion = true;
 
                         try {
-                            this.gamePlace[rowIndex - 1][this.state.block.getXDimensions()[0]] = {
+                            this.gamePlace[this.state.block.getYDimensions()[0]][this.state.block.getXDimensions()[0]] = {
                                 x: this.state.block.getXDimensions()[0],
                                 y: this.state.block.getYDimensions()[0],
                                 color: this.state.block.color
@@ -222,13 +220,15 @@ class Canvas extends React.Component {
                     this button is just because of testing 
                     After the develop you should delete it!!!!!!
 
-                    <button onClick={this.freezeTheState}>Stop</button>
                 */}
+                <button onClick={this.freezeTheState}>Stop</button>
+
                 { this.state.gameOver ?  (
-                        <GameOver />
+                        null
                 ):
                         null
                 }
+
 
                 
             </div>
