@@ -95,6 +95,20 @@ class Canvas extends React.Component {
             if(row.every(val => !!val)) {
                 this.gamePlace[i] = new Array(7).fill(null)
                 console.log('BoooooOOOOOOOOOOoooooooMMMMMMMMMMMM')
+
+                this.gamePlace = [
+                    ...this.gamePlace.slice(0, i).map((el, ind) => {
+                        return el.map((obj, index) => {
+                            if(!!obj) return {...obj, y: obj.y+1}
+
+                            return null
+                        })
+                        return null
+                    }), 
+                    ...this.gamePlace.slice(i+1, this.gamePlace.length)]
+                this.gamePlace.unshift(new Array(7).fill(null))
+
+                console.table(this.gamePlace)
             }
         });
 
@@ -224,9 +238,9 @@ class Canvas extends React.Component {
                 <button onClick={this.freezeTheState}>Stop</button>
 
                 { this.state.gameOver ?  (
-                        null
+                    <GameOver />
                 ):
-                        null
+                    null
                 }
 
 
