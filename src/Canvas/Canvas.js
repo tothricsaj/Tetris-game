@@ -29,6 +29,8 @@ class Canvas extends React.Component {
             color: '#282c34' // cheating
         };
 
+        console.table(this.gamePlace[8])
+
         /////////////////////////////////////////////////////
 
         this.state = {
@@ -83,6 +85,33 @@ class Canvas extends React.Component {
         ctx.save();
 
         ctx.clearRect(0, 0, width, height);
+
+        ///////////////////////
+        // CHECK BOOM SECTON //
+        ///////////////////////
+
+        this.gamePlace.forEach((row, i) => {
+
+            if(row.every(val => !!val)) {
+                this.gamePlace[i] = new Array(7).fill(null)
+                console.log('BoooooOOOOOOOOOOoooooooMMMMMMMMMMMM')
+
+                this.gamePlace = [
+                    ...this.gamePlace.slice(0, i).map((el, ind) => {
+                        return el.map((obj, index) => {
+                            if(!!obj) return {...obj, y: obj.y+1}
+
+                            return null
+                        })
+                        return null
+                    }), 
+                    ...this.gamePlace.slice(i+1, this.gamePlace.length)]
+                this.gamePlace.unshift(new Array(7).fill(null))
+
+                console.table(this.gamePlace)
+            }
+        });
+
         
         // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         // DRAWING SECTION
@@ -100,6 +129,8 @@ class Canvas extends React.Component {
                 }
             });
         });
+
+        
 
         // reference block due to test
         // ctx.fillStyle = 'pink';
@@ -141,7 +172,6 @@ class Canvas extends React.Component {
 
     checkCollosion() {
         this.gamePlace.forEach((row, i) => {
-            let rowIndex = i;
             row.forEach((obj, i )=> {
                 if(!!obj) {
                     let matchDim = (
@@ -167,7 +197,7 @@ class Canvas extends React.Component {
                         this.collosion = true;
 
                         try {
-                            this.gamePlace[rowIndex - 1][this.state.block.getXDimensions()[0]] = {
+                            this.gamePlace[this.state.block.getYDimensions()[0]][this.state.block.getXDimensions()[0]] = {
                                 x: this.state.block.getXDimensions()[0],
                                 y: this.state.block.getYDimensions()[0],
                                 color: this.state.block.color
@@ -204,13 +234,15 @@ class Canvas extends React.Component {
                     this button is just because of testing 
                     After the develop you should delete it!!!!!!
 
-                    <button onClick={this.freezeTheState}>Stop</button>
                 */}
+                <button onClick={this.freezeTheState}>Stop</button>
+
                 { this.state.gameOver ?  (
-                        <GameOver />
+                    <GameOver />
                 ):
-                        null
+                    null
                 }
+
 
                 
             </div>
