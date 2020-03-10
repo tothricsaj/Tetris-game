@@ -88,13 +88,13 @@ export class TestBlock extends Block {
 }
 
 export class TBlock extends Block {
-    constructor() {
+    constructor(startingPosX) {
         super();
 
-        this.x1 = 138; // left
-        this.x2 = 148; // middle
-        this.x3 = 158; // right
-        this.x4 = 148; // bottom
+        this.x1 = startingPosX - 10; // left
+        this.x2 = startingPosX;      // 148 middle
+        this.x3 = startingPosX + 10; // right
+        this.x4 = startingPosX;      // bottom
 
         this.y1 = 0; // left
         this.y2 = 0; // middle
@@ -111,13 +111,13 @@ export class TBlock extends Block {
 }
 
 export class SBlock extends Block {
-    constructor() {
+    constructor(startingPosX) {
         super();
 
-        this.x1 = 148; // topLeft
-        this.x2 = 158; // topRight
-        this.x3 = 138; 
-        this.x4 = 148; 
+        this.x1 = startingPosX;      // topLeft
+        this.x2 = startingPosX + 10; // topRight
+        this.x3 = startingPosX - 10; // bottomLeft
+        this.x4 = startingPosX;      // bottomRight
 
         this.y1 = 0;
         this.y2 = 0;
@@ -134,12 +134,12 @@ export class SBlock extends Block {
 }
 
 export class ZBlock extends Block {
-    constructor() {
+    constructor(startingPosX) {
         super();
-        this.x1 = 138;
-        this.x2 = 148;
-        this.x3 = 148;
-        this.x4 = 158;
+        this.x1 = startingPosX - 10; // topLeft
+        this.x2 = startingPosX;      // topRight
+        this.x3 = startingPosX;      // bottomLeft
+        this.x4 = startingPosX + 10; // bottomRight
 
         this.y1 = 0;
         this.y2 = 0;
@@ -157,13 +157,13 @@ export class ZBlock extends Block {
 }
 
 export class OBlock extends Block {
-    constructor() {
+    constructor(startingPosX) {
         super();
 
-        this.x1 = 138;
-        this.x2 = 148;
-        this.x3 = 138;
-        this.x4 = 148;
+        this.x1 = startingPosX - 10;
+        this.x2 = startingPosX;
+        this.x3 = startingPosX - 10;
+        this.x4 = startingPosX;
 
         this.y1 = 0;
         this.y2 = 0;
@@ -181,13 +181,13 @@ export class OBlock extends Block {
 }
 
 export class IBlock extends Block {
-    constructor() {
+    constructor(startingPosX) {
         super();
 
-        this.x1 = 138;
-        this.x2 = 138;
-        this.x3 = 138;
-        this.x4 = 138;
+        this.x1 = startingPosX;
+        this.x2 = startingPosX;
+        this.x3 = startingPosX;
+        this.x4 = startingPosX;
 
         this.y1 = 0;
         this.y2 = 10;
