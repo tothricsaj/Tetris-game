@@ -13,7 +13,15 @@ class Canvas extends React.Component {
         
         this._bb = new BlockBuilder();
         this.canvas = React.createRef();
-        this.blockType = 'Testtype';
+        // this.blockType = 'Testtype';
+
+        this.blockType = [
+                'Itype',
+                'Otype',
+                'Ztype',
+                'Stype',
+                'Ttype'
+            ][Math.floor(Math.random() * 5)];
 
         // I guess that a more subtle way exists.....
         this.gamePlace = [];
@@ -60,21 +68,21 @@ class Canvas extends React.Component {
         this.checkCollosion();
 
         if((this.state.block.getYDimensions()[0] >= 8 || this.collosion) && !this.state.gameOver) {
-            // let blockTypes = [
-            //     'Itype',
-            //     'Otype',
-            //     'Ztype',
-            //     'Stype',
-            //     'Ttype'
-            // ];
-
             let blockTypes = [
-                'Testtype',
-                'Testtype',
-                'Testtype',
-                'Testtype',
-                'Testtype'
+                'Itype',
+                'Otype',
+                'Ztype',
+                'Stype',
+                'Ttype'
             ];
+
+            // let blockTypes = [
+            //     'Testtype',
+            //     'Testtype',
+            //     'Testtype',
+            //     'Testtype',
+            //     'Testtype'
+            // ];
 
             this.setState({
                 ...this.state,
