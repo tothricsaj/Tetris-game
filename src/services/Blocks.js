@@ -136,10 +136,10 @@ export class SBlock extends Block {
 export class ZBlock extends Block {
     constructor(startingPosX) {
         super();
-        this.x1 = startingPosX - 10; // topLeft
+        this.x1 = startingPosX - 1; // topLeft
         this.x2 = startingPosX;      // topRight
         this.x3 = startingPosX;      // bottomLeft
-        this.x4 = startingPosX + 10; // bottomRight
+        this.x4 = startingPosX + 1; // bottomRight
 
         this.y1 = 0;
         this.y2 = 0;
@@ -160,9 +160,9 @@ export class OBlock extends Block {
     constructor(startingPosX) {
         super();
 
-        this.x1 = startingPosX - 10;
+        this.x1 = startingPosX - 1;
         this.x2 = startingPosX;
-        this.x3 = startingPosX - 10;
+        this.x3 = startingPosX - 1;
         this.x4 = startingPosX;
 
         this.y1 = 0;
