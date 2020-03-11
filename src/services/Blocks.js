@@ -38,9 +38,9 @@ export class Block {
     moveDown(edge) {
         if (this.y1 <= edge) {
             this.y1 += 1;
-            // this.y2 += downValue;
-            // this.y3 += downValue;
-            // this.y4 += downValue;
+            this.y2 += 1;
+            this.y3 += 1;
+            this.y4 += 1;
         }
     }
 
