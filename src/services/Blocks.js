@@ -46,20 +46,31 @@ export class Block {
 
     moveRight() {
         // TODO: find a common solution for every block type
-        if(this.x1 <= 5) {
+        if(
+            this.x1 <= 5 &&
+            this.x2 <= 5 &&
+            this.x3 <= 5 &&
+            this.x4 <= 5
+
+        ) {
             this.x1 += 1;
-            // this.x2 += rightValue;
-            // this.x3 += rightValue;
-            // this.x4 += rightValue;
+            this.x2 += 1;
+            this.x3 += 1;
+            this.x4 += 1;
         }
     }
 
     moveLeft() {
-        if (this.x1 >= 1) {
+        if (
+            this.x1 >= 1 &&
+            this.x2 >= 1 &&
+            this.x3 >= 1 &&
+            this.x4 >= 1
+        ) {
             this.x1 -= 1;
-            // this.x2 -= leftValue;
-            // this.x3 -= leftValue;
-            // this.x4 -= leftValue;
+            this.x2 -= 1;
+            this.x3 -= 1;
+            this.x4 -= 1;
         }
     }
 
