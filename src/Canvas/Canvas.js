@@ -13,8 +13,9 @@ class Canvas extends React.Component {
         
         this._bb = new BlockBuilder();
         this.canvas = React.createRef();
-        this.blockType = 'Ttype';
+        this.blockType = 'Stype'; // this is only due to the test
 
+        // after the test, make it uncommented
         // this.blockType = [
         //         'Itype',
         //         'Otype',
@@ -76,7 +77,7 @@ class Canvas extends React.Component {
             //     'Ttype'
             // ];
 
-            let blockTypes = new Array(5).fill('Ttype')
+            let blockTypes = new Array(5).fill('Stype')
 
             // let blockTypes = [
             //     'Testtype',

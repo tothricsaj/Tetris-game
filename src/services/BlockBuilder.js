@@ -3,7 +3,7 @@ import { TBlock, SBlock, ZBlock, OBlock, IBlock, TestBlock } from './Blocks.js';
 export class BlockBuilder {
 
         constructor() {
-        this.startingPosX = 2
+        this.startingPosX = 3
         this.tmpFlag = true
     }
 

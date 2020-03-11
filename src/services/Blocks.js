@@ -115,8 +115,8 @@ export class SBlock extends Block {
         super();
 
         this.x1 = startingPosX;      // topLeft
-        this.x2 = startingPosX + 10; // topRight
-        this.x3 = startingPosX - 10; // bottomLeft
+        this.x2 = startingPosX + 1; // topRight
+        this.x3 = startingPosX - 1; // bottomLeft
         this.x4 = startingPosX;      // bottomRight
 
         this.y1 = 0;
