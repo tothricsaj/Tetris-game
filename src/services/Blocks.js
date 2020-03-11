@@ -91,15 +91,15 @@ export class TBlock extends Block {
     constructor(startingPosX) {
         super();
 
-        this.x1 = startingPosX - 10; // left
+        this.x1 = startingPosX - 1; // left
         this.x2 = startingPosX;      // 148 middle
-        this.x3 = startingPosX + 10; // right
+        this.x3 = startingPosX + 1; // right
         this.x4 = startingPosX;      // bottom
 
         this.y1 = 0; // left
         this.y2 = 0; // middle
         this.y3 = 0; // right
-        this.y4 = 10; // bottom
+        this.y4 = 1; // bottom
 
         this.color = 'rgb(30, 140, 180)';
 
@@ -121,8 +121,8 @@ export class SBlock extends Block {
 
         this.y1 = 0;
         this.y2 = 0;
-        this.y3 = 10;
-        this.y4 = 10;
+        this.y3 = 1;
+        this.y4 = 1;
 
         this.color = 'rgb(230, 100, 80)'
 
@@ -143,8 +143,8 @@ export class ZBlock extends Block {
 
         this.y1 = 0;
         this.y2 = 0;
-        this.y3 = 10;
-        this.y4 = 10;
+        this.y3 = 1;
+        this.y4 = 1;
 
         this.color = 'rgb(200, 160, 90)';
 
@@ -167,8 +167,8 @@ export class OBlock extends Block {
 
         this.y1 = 0;
         this.y2 = 0;
-        this.y3 = 10;
-        this.y4 = 10;
+        this.y3 = 1;
+        this.y4 = 1;
 
         this.color = 'rgb(230, 140, 180)';
 
@@ -190,9 +190,9 @@ export class IBlock extends Block {
         this.x4 = startingPosX;
 
         this.y1 = 0;
-        this.y2 = 10;
-        this.y3 = 20;
-        this.y4 = 30;
+        this.y2 = 1;
+        this.y3 = 2;
+        this.y4 = 3;
 
         this.color = 'rgb(140, 180, 100)';
 
