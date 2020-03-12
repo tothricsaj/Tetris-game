@@ -10,11 +10,13 @@ class Canvas extends React.Component {
         // TODO:
         // Well, is it the best way? Search some solution
         document.addEventListener('keydown', this.blockControll);
+
+        this.canWidth = 7
+        this.canHeight = 9
         
         this._bb = new BlockBuilder();
         this.canvas = React.createRef();
         // this.blockType = 'Stype'; // this is only due to the test
-
         // after the test, make it uncommented
         this.blockType = [
                 'Itype',
@@ -26,19 +28,17 @@ class Canvas extends React.Component {
 
         // I guess that a more subtle way exists.....
         this.gamePlace = [];
-        for(let i=0; i<9; i++) this.gamePlace.push(new Array(7).fill(null));
+        for(let i=0; i<this.canHeight; i++) this.gamePlace.push(new Array(this.canWidth).fill(null));
 
         /////////////////////////////////////////////////////
         ///////////// Initial block in gamePlace ////////////
         /////////////////////////////////////////////////////
 
-        this.gamePlace[8][4] = { // currently, this is the initial object - it is a little hackie
+        this.gamePlace[this.canHeight - 1][4] = { // currently, this is the initial object - it is a little hackie
             x: 0,
             y: 0,
             color: '#282c34' // cheating
         };
-
-        console.table(this.gamePlace[8])
 
         /////////////////////////////////////////////////////
 
@@ -105,7 +105,6 @@ class Canvas extends React.Component {
 
             if(row.every(val => !!val)) {
                 this.gamePlace[i] = new Array(7).fill(null)
-                console.log('BoooooOOOOOOOOOOoooooooMMMMMMMMMMMM')
 
                 this.gamePlace = [
                     ...this.gamePlace.slice(0, i).map((el, ind) => {
@@ -140,12 +139,6 @@ class Canvas extends React.Component {
             });
         });
 
-        
-
-        // reference block due to test
-        // ctx.fillStyle = 'pink';
-        // ctx.fillRect(35, 80, 10, 10);
-
         // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
         if (this._moveToBottom === 80 && !this.state.gameOver) {
@@ -157,13 +150,10 @@ class Canvas extends React.Component {
         ctx.restore();
 
         this._moveToBottom += 8; // bigger number, faster move
-
-        // document.removeEventListener('keydown', blockControll);
     }
 
     blockControll = (event) => {
         event.preventDefault();
-        // console.log(event.keyCode);
 
         switch(event.keyCode) {
             case 37:
@@ -200,10 +190,10 @@ class Canvas extends React.Component {
                     );
 
                     let canvasBottomMatch = (
-                        (this.state.block.getYDimensions()[0] >= 8) ||
-                        (this.state.block.getYDimensions()[1] >= 8) ||
-                        (this.state.block.getYDimensions()[2] >= 8) ||
-                        (this.state.block.getYDimensions()[3] >= 8)
+                        (this.state.block.getYDimensions()[0] >= this.canHeight - 1) ||
+                        (this.state.block.getYDimensions()[1] >= this.canHeight - 1) ||
+                        (this.state.block.getYDimensions()[2] >= this.canHeight - 1) ||
+                        (this.state.block.getYDimensions()[3] >= this.canHeight - 1)
                     )
 
                     if (matchDim && obj.y === 1) {
@@ -260,14 +250,14 @@ class Canvas extends React.Component {
     render() {
         return (
             <div id="gameView">
-                <canvas ref={this.canvas} id="canvas" width="70" height="90" />
+                <canvas ref={this.canvas} id="canvas" width={this.canWidth * 10} height={this.canHeight * 10} />
 
                 {/* 
                     this button is just because of testing 
                     After the develop you should delete it!!!!!!
 
                 */}
-                <button onClick={this.freezeTheState}>Stop</button>
+                <button onClick={this.freezeTheState}>Show gamePlace</button>
 
                 { this.state.gameOver ?  (
                     <GameOver />
