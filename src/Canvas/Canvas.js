@@ -185,14 +185,14 @@ class Canvas extends React.Component {
             row.forEach((obj, i )=> {
                 if(!!obj) {
                     let matchDim = (
-                        // TODO it may change when the comples bolcks will come
+                        // TODO it may change when the complex bolcks will come
                         obj.x === this.state.block.getXDimensions()[0] &&
                         obj.y === this.state.block.getYDimensions()[0] + 1
                     );
 
                     if (matchDim && obj.y === 1) {
-                        this.state.gameOver = true
                         // TODO: this is not funky, I do know nonetheless I can't solve in other way.
+                        this.state.gameOver = true
                         // Yes, I must learn more about this effect.
                         ////////////////////////////////////////////////////
                         // this.setState({...this.state, gameOver: true}) //
@@ -206,12 +206,18 @@ class Canvas extends React.Component {
                     if(matchDim || this.state.block.getYDimensions()[0] >= 8) {
                         this.collosion = true;
 
+                        ///////////////////////////////////
+                        // register block into gamePlace //
+                        ///////////////////////////////////
                         try {
-                            this.gamePlace[this.state.block.getYDimensions()[0]][this.state.block.getXDimensions()[0]] = {
-                                x: this.state.block.getXDimensions()[0],
-                                y: this.state.block.getYDimensions()[0],
-                                color: this.state.block.color
+                            for(let i=0; i<4; i++) {
+                                this.gamePlace[this.state.block.getYDimensions()[i]][this.state.block.getXDimensions()[i]] = {
+                                    x: this.state.block.getXDimensions()[i],
+                                    y: this.state.block.getYDimensions()[i],
+                                    color: this.state.block.color
+                                }
                             }
+                            
                         } catch(e) {
                             // console.table(this.gamePlace);
                             // console.table({x1: this.state.block.x1, y1: this.state.block.y1 });
