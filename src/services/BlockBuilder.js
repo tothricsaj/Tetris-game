@@ -2,9 +2,11 @@ import { TBlock, SBlock, ZBlock, OBlock, IBlock, TestBlock } from './Blocks.js';
 
 export class BlockBuilder {
 
-        constructor() {
-        this.startingPosX = 3
+        constructor(heightOfCanvas) {
+        this.startingPosX = Math.floor(heightOfCanvas / 2)
         this.tmpFlag = true
+
+        console.log(this.startingPosX)
     }
 
     builder(block, ctx) {

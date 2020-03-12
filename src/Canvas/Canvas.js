@@ -14,7 +14,7 @@ class Canvas extends React.Component {
         this.canWidth = 17
         this.canHeight = 29
         
-        this._bb = new BlockBuilder();
+        this._bb = new BlockBuilder(this.canWidth + 1);
         this.canvas = React.createRef();
         // this.blockType = 'Stype'; // this is only due to the test
         // after the test, make it uncommented
