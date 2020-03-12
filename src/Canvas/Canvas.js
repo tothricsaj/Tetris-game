@@ -11,8 +11,8 @@ class Canvas extends React.Component {
         // Well, is it the best way? Search some solution
         document.addEventListener('keydown', this.blockControll);
 
-        this.canWidth = 7
-        this.canHeight = 9
+        this.canWidth = 17
+        this.canHeight = 29
         
         this._bb = new BlockBuilder();
         this.canvas = React.createRef();
@@ -68,7 +68,7 @@ class Canvas extends React.Component {
 
         this.checkCollosion();
 
-        if((this.state.block.getYDimensions()[0] >= 8 || this.collosion) && !this.state.gameOver) {
+        if((this.state.block.getYDimensions()[0] >= this.canWidth - 1 || this.collosion) && !this.state.gameOver) {
             let blockTypes = [
                 'Itype',
                 'Otype',
@@ -141,9 +141,9 @@ class Canvas extends React.Component {
 
         // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-        if (this._moveToBottom === 80 && !this.state.gameOver) {
+        if (this._moveToBottom === ((this.canWidth * 10)-10) && !this.state.gameOver) {
             // Here the controll the speed of the block's moving
-            this.state.block.moveDown(90);
+            this.state.block.moveDown(this.canHeight * 10);
             this._moveToBottom = 0;
         }
 
@@ -163,7 +163,7 @@ class Canvas extends React.Component {
                 this.state.block.moveRight(this.canWidth - 2);
                 return;
             case 40:
-                this.state.block.moveDown(10, 70);
+                this.state.block.moveDown(this.canWidth * 10);
                 return;
             default:
                 return;
