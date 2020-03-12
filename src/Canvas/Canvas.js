@@ -186,8 +186,17 @@ class Canvas extends React.Component {
                 if(!!obj) {
                     let matchDim = (
                         // TODO it may change when the complex bolcks will come
-                        obj.x === this.state.block.getXDimensions()[0] &&
-                        obj.y === this.state.block.getYDimensions()[0] + 1
+                        (obj.x === this.state.block.getXDimensions()[0] &&
+                        obj.y === this.state.block.getYDimensions()[0] + 1) ||
+
+                        (obj.x === this.state.block.getXDimensions()[1] &&
+                        obj.y === this.state.block.getYDimensions()[1] + 1) ||
+
+                        (obj.x === this.state.block.getXDimensions()[2] &&
+                        obj.y === this.state.block.getYDimensions()[2] + 1) ||
+
+                        (obj.x === this.state.block.getXDimensions()[3] &&
+                        obj.y === this.state.block.getYDimensions()[3] + 1) 
                     );
 
                     if (matchDim && obj.y === 1) {
