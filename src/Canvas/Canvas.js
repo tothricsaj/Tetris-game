@@ -116,8 +116,6 @@ class Canvas extends React.Component {
                     }), 
                     ...this.gamePlace.slice(i+1, this.gamePlace.length)]
                 this.gamePlace.unshift(new Array(7).fill(null))
-
-                console.table(this.gamePlace)
             }
         });
 
@@ -141,7 +139,7 @@ class Canvas extends React.Component {
 
         // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-        if (this._moveToBottom === ((this.canWidth * 10)-10) && !this.state.gameOver) {
+        if (this._moveToBottom === ((this.canHeight * 10)-10) && !this.state.gameOver) {
             // Here the controll the speed of the block's moving
             this.state.block.moveDown(this.canHeight * 10);
             this._moveToBottom = 0;
@@ -163,7 +161,7 @@ class Canvas extends React.Component {
                 this.state.block.moveRight(this.canWidth - 2);
                 return;
             case 40:
-                this.state.block.moveDown(this.canWidth * 10);
+                this.state.block.moveDown(this.canHeight * 10);
                 return;
             default:
                 return;
@@ -225,8 +223,8 @@ class Canvas extends React.Component {
                             }
                             
                         } catch(e) {
-                            // console.table(this.gamePlace);
-                            // console.table({x1: this.state.block.x1, y1: this.state.block.y1 });
+                            console.warn(this.gamePlace);
+                            console.warn({x1: this.state.block.x1, y1: this.state.block.y1 });
                         }
 
                         return true;
