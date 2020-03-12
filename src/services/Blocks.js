@@ -44,13 +44,13 @@ export class Block {
         }
     }
 
-    moveRight() {
+    moveRight(edge) {
         // TODO: find a common solution for every block type
         if(
-            this.x1 <= 5 &&
-            this.x2 <= 5 &&
-            this.x3 <= 5 &&
-            this.x4 <= 5
+            this.x1 <= edge &&
+            this.x2 <= edge &&
+            this.x3 <= edge &&
+            this.x4 <= edge
 
         ) {
             this.x1 += 1;

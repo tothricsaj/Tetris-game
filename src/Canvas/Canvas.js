@@ -160,7 +160,7 @@ class Canvas extends React.Component {
                 this.state.block.moveLeft(10);
                 return;
             case 39:
-                this.state.block.moveRight(10, 60);
+                this.state.block.moveRight(this.canWidth - 2);
                 return;
             case 40:
                 this.state.block.moveDown(10, 70);
