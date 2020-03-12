@@ -199,6 +199,13 @@ class Canvas extends React.Component {
                         obj.y === this.state.block.getYDimensions()[3] + 1) 
                     );
 
+                    let canvasBottomMatch = (
+                        (this.state.block.getYDimensions()[0] >= 8) ||
+                        (this.state.block.getYDimensions()[1] >= 8) ||
+                        (this.state.block.getYDimensions()[2] >= 8) ||
+                        (this.state.block.getYDimensions()[3] >= 8)
+                    )
+
                     if (matchDim && obj.y === 1) {
                         // TODO: this is not funky, I do know nonetheless I can't solve in other way.
                         this.state.gameOver = true
@@ -212,7 +219,7 @@ class Canvas extends React.Component {
 
                     // console.table(this.gamePlace[rowIndex][i])
                     // console.table(this.state.block)
-                    if(matchDim || this.state.block.getYDimensions()[0] >= 8) {
+                    if(matchDim || canvasBottomMatch) {
                         this.collosion = true;
 
                         ///////////////////////////////////
